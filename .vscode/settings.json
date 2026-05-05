@@ -1,0 +1,5 @@
+{
+    "markdown.marp.themes": [
+        "./themes/hs-ansbach-weeger.css"
+    ]
+}
