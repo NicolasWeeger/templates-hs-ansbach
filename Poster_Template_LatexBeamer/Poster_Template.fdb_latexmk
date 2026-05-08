@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex Poster_Template"] 1778233286.51545 "Poster_Template.aux" "Poster_Template.bbl" "Poster_Template" 1778233294.26151 0
-  "./references.bib" 1778159579.85726 224 092b82810f8f1c8078b130ea187c9bd7 ""
+["bibtex Poster_Template"] 1778243819.76348 "Poster_Template.aux" "Poster_Template.bbl" "Poster_Template" 1778243864.49732 0
+  "./references.bib" 1778233860.59967 224 092b82810f8f1c8078b130ea187c9bd7 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "Poster_Template.aux" 1778233293.68686 3418 4d8564b42080c5f94890d9e988e95d0c "pdflatex"
+  "Poster_Template.aux" 1778243864.12512 3374 51b3f8fb04e6401e2cbf49b2b4d3848f "pdflatex"
   (generated)
   "Poster_Template.bbl"
   "Poster_Template.blg"
   (rewritten before read)
-["pdflatex"] 1778233286.70955 "/run/media/nico/Daten/Dokumente/01_Forschung/Eigene_Paper/ICSA26-Poster/Poster_Template/Poster_Template.tex" "Poster_Template.pdf" "Poster_Template" 1778233294.26303 0
-  "/run/media/nico/Daten/Dokumente/01_Forschung/Eigene_Paper/ICSA26-Poster/Poster_Template/Poster_Template.tex" 1778233261.33992 14206 f9ee0d88525a609ecc1c833d4885e964 ""
+["pdflatex"] 1778243860.73196 "/run/media/nico/Daten/Dokumente/40_Infos/Vorlagen Powerpoint/hs-ansbach-weeger/Poster_Template_LatexBeamer/Poster_Template.tex" "Poster_Template.pdf" "Poster_Template" 1778243864.49789 0
+  "/run/media/nico/Daten/Dokumente/40_Infos/Vorlagen Powerpoint/hs-ansbach-weeger/Poster_Template_LatexBeamer/Poster_Template.tex" 1778243860.50793 13999 e0f1748ee1f45dadc369ea36b69548db ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands0.enc" 1622837620 2920 d63721872b8c77041b88e51b8f7c291d ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands1.enc" 1651520503 2608 3139db8e1f9371a4f87c0715d17fa217 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free0.enc" 1622837620 3083 a707712f77b073b3833e4b1334a30e99 ""
@@ -300,11 +300,12 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1764115200 40900 887e0dc8cac988a9e9c574af364cf837 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1767782023.62448 4602601 5d02a5c5d52d7237566d144856366042 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1767781840 7753796 bf423da27c6d34d99fcca1ade21f0acd ""
-  "Poster_Template.aux" 1778233293.68686 3418 4d8564b42080c5f94890d9e988e95d0c "pdflatex"
-  "Poster_Template.bbl" 1778233286.68934 1017 438049dd6cf495fbd49d6f4edcde5c48 "bibtex Poster_Template"
-  "Poster_Template.nav" 1778233293.69393 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
-  "Poster_Template.out" 1778233292.21573 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Poster_Template.tex" 1778233261.33992 14206 f9ee0d88525a609ecc1c833d4885e964 ""
+  "Logo_HS_Ansbach_white.png" 1778243829.78727 15918 5cee78af6b9443079ab64b8f35cf78b4 ""
+  "Poster_Template.aux" 1778243864.12512 3374 51b3f8fb04e6401e2cbf49b2b4d3848f "pdflatex"
+  "Poster_Template.bbl" 1778243819.91646 1017 438049dd6cf495fbd49d6f4edcde5c48 "bibtex Poster_Template"
+  "Poster_Template.nav" 1778243864.12802 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
+  "Poster_Template.out" 1778243863.18994 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Poster_Template.tex" 1778243860.50793 13999 e0f1748ee1f45dadc369ea36b69548db ""
   (generated)
   "Poster_Template.aux"
   "Poster_Template.log"

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2026.1.7)  8 MAY 2026 11:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2026.1.7)  8 MAY 2026 14:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/run/media/nico/Daten/Dokumente/01_Forschung/Eigene_Paper/ICSA26-Poster/Poster_Template/Poster_Template.tex
-(/run/media/nico/Daten/Dokumente/01_Forschung/Eigene_Paper/ICSA26-Poster/Poster_Template/Poster_Template.tex
+**"/run/media/nico/Daten/Dokumente/40_Infos/Vorlagen Powerpoint/hs-ansbach-weeger/Poster_Template_LatexBeamer/Poster_Template.tex"
+(/run/media/nico/Daten/Dokumente/40_Infos/Vorlagen Powerpoint/hs-ansbach-weeger/Poster_Template_LatexBeamer/Poster_Template.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2023/02/20 v3.69 A class for typesetting presentations
@@ -1000,7 +1000,7 @@ Package: qrcode 2015/01/08 v1.51 QR code generation
 \c@qr@divisionsremaining=\count413
 )
 \colw=\skip87
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 191.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 184.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (./Poster_Template.aux <Reading QR code for "https://github.com/your-org/your-repo" at level 3-M from aux file.>
@@ -1008,24 +1008,24 @@ File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 \openout1 = `Poster_Template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 191.
-LaTeX Font Info:    ... okay on input line 191.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1080,57 +1080,57 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 191.
+Package hyperref Info: Link coloring OFF on input line 184.
  (./Poster_Template.out) (./Poster_Template.out)
 \@outlinefile=\write5
 \openout5 = `Poster_Template.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 191.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 184.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 191.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 184.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 191.
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 184.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 191.
+(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 184.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 191.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 191.
+(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 184.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 191.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 191.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 191.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 184.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 191.
+(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 191.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 191.
+(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 184.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 191.
+(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 191.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 191.
+(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 184.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 191.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 191.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 184.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 191.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 184.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 191.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 191.
+(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 191.
+(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 191.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 191.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 184.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 191.
+(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 184.
  (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -1146,74 +1146,79 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 \c@lstlisting=\count420
  (./Poster_Template.nav)
-LaTeX Font Info:    Calculating math sizes for size <32> on input line 414.
-LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 414.
+<Logo_HS_Ansbach_white.png, id=49, 733.74126pt x 317.185pt>
+File: Logo_HS_Ansbach_white.png Graphic file (type png)
+<use Logo_HS_Ansbach_white.png>
+Package pdftex.def Info: Logo_HS_Ansbach_white.png  used on input line 407.
+(pdftex.def)             Requested size: 329.1057pt x 142.26378pt.
+LaTeX Font Info:    Calculating math sizes for size <32> on input line 407.
+LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 407.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 414.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 407.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 414.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 407.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 414.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 407.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <32> on input line 414.
+(Font)              <32> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <22.3999> on input line 414.
+(Font)              <22.3999> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <16> on input line 414.
+(Font)              <16> on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <32> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <22.3999> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <16> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
-LaTeX Font Info:    Calculating math sizes for size <26> on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
+LaTeX Font Info:    Calculating math sizes for size <26> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <26> on input line 414.
+(Font)              <26> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <18.19992> on input line 414.
+(Font)              <18.19992> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <13> on input line 414.
+(Font)              <13> on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <26> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <18.19992> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <13> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
-LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
+LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on input line 407.
  (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd)
-LaTeX Font Info:    Calculating math sizes for size <31.1> on input line 414.
+LaTeX Font Info:    Calculating math sizes for size <31.1> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <31.1> on input line 414.
+(Font)              <31.1> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <21.7699> on input line 414.
+(Font)              <21.7699> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <15.55> on input line 414.
+(Font)              <15.55> on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <31.1> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <21.7699> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <15.55> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 414.
-LaTeX Font Info:    Trying to load font information for U+fontawesomefree0 on input line 414.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 407.
+LaTeX Font Info:    Trying to load font information for U+fontawesomefree0 on input line 407.
  (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree0.fd) 
 
 <QR code requested for "https://github.com/your-org/your-repo" in version 0-M.>
 <Copying the QR code for "https://github.com/your-org/your-repo" in version 3-M as previously calculated.>
-LaTeX Font Info:    Trying to load font information for U+fontawesomebrands0 on input line 414.
+LaTeX Font Info:    Trying to load font information for U+fontawesomebrands0 on input line 407.
 (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomebrands0.fd)
 LaTeX Font Info:    Font shape `U/fontawesomebrands0/solid/n' in size <37.33> not available
-(Font)              Font shape `U/fontawesomebrands0/regular/n' tried instead on input line 414.
+(Font)              Font shape `U/fontawesomebrands0/regular/n' tried instead on input line 407.
 
-Overfull \hbox (7.76967pt too wide) in paragraph at lines 414--414
+Overfull \hbox (7.76967pt too wide) in paragraph at lines 407--407
 [][]  
  []
 
@@ -1222,13 +1227,13 @@ Overfull \hbox (7.76967pt too wide) in paragraph at lines 414--414
 <QR code requested for "https://arxiv.org/abs/XXXX.XXXXX" in version 0-M.>
 <Error-correction level increased from M to Q at no cost.>
 <Copying the QR code for "https://arxiv.org/abs/XXXX.XXXXX" in version 3-Q as previously calculated.>
-LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on input line 414.
+LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on input line 407.
 (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd)
-Overfull \hbox (11.84697pt too wide) in paragraph at lines 414--414
+Overfull \hbox (11.84697pt too wide) in paragraph at lines 407--407
 [][]  
  []
 
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 414.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 407.
 (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (./Poster_Template.bbl
@@ -1236,14 +1241,14 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <21.6> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 24.
 )
 LaTeX Font Info:    Font shape `U/fontawesomebrands0/solid/n' in size <31.1> not available
-(Font)              Font shape `U/fontawesomebrands0/regular/n' tried instead on input line 414.
-LaTeX Font Info:    Trying to load font information for U+fontawesomebrands1 on input line 414.
+(Font)              Font shape `U/fontawesomebrands0/regular/n' tried instead on input line 407.
+LaTeX Font Info:    Trying to load font information for U+fontawesomebrands1 on input line 407.
  (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomebrands1.fd)
 LaTeX Font Info:    Font shape `U/fontawesomebrands1/solid/n' in size <31.1> not available
-(Font)              Font shape `U/fontawesomebrands1/regular/n' tried instead on input line 414.
+(Font)              Font shape `U/fontawesomebrands1/regular/n' tried instead on input line 407.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free0.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands0.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands1.enc}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free0.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands0.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands1.enc} <./Logo_HS_Ansbach_white.png>]
 \tf@nav=\write6
 \openout6 = `Poster_Template.nav'.
 
@@ -1256,77 +1261,22 @@ LaTeX Font Info:    Font shape `U/fontawesomebrands1/solid/n' in size <31.1> not
  (./Poster_Template.aux <Reading QR code for "https://github.com/your-org/your-repo" at level 3-M from aux file.>
 <Reading QR code for "https://arxiv.org/abs/XXXX.XXXXX" at level 3-Q from aux file.>
 )
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `Poster_Template.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 39434 strings out of 476041
- 811863 string characters out of 5793175
+ 39433 strings out of 476041
+ 811951 string characters out of 5793175
  2067388 words of memory out of 6000000
- 59129 multiletter control sequences out of 15000+600000
+ 59126 multiletter control sequences out of 15000+600000
  656940 words of font info for 128 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 128i,19n,122p,1092b,1597s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,19n,122p,1113b,1597s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsso17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Poster_Template.pdf (1 page, 182463 bytes).
+Output written on Poster_Template.pdf (1 page, 193473 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
+ 117 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  4 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
-
-some5/fa5free0
-.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands0.enc
-}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}{/usr
-/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands1.enc}]
-\tf@nav=\write6
-\openout6 = `Poster_Template.nav'.
-
-\tf@toc=\write7
-\openout7 = `Poster_Template.toc'.
-
-\tf@snm=\write8
-\openout8 = `Poster_Template.snm'.
-
-
-(./Poster_Template.aux
-<Reading QR code for "https://github.com/your-org/your-repo" at level 3-M from 
-aux file.>
-
-<Reading QR code for "https://arxiv.org/abs/XXXX.XXXXX" at level 3-Q from aux f
-ile.>
-)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package rerunfilecheck Info: File `Poster_Template.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
- ) 
-Here is how much of TeX's memory you used:
- 41969 strings out of 476041
- 852275 string characters out of 5793175
- 2067388 words of memory out of 6000000
- 61665 multiletter control sequences out of 15000+600000
- 656940 words of font info for 128 fonts, out of 8000000 for 9000
- 1137 hyphenation exceptions out of 8191
- 128i,19n,360p,1002b,4280s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Br
-ands-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5
-/FontAwesome5Free-Solid.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/l
-m/lmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsso17.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Poster_Template.pdf (1 page, 182737 bytes).
-PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
 
