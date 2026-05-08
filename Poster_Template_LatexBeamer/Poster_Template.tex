@@ -1,0 +1,415 @@
+% =====================================================================
+%  Conference Poster Template
+%  Card-based layout with header band, two columns, footer
+%
+%  Format : A0 portrait (841 mm x 1189 mm)
+%  Engine : pdflatex / lualatex
+%
+%  HOW TO USE
+%  ----------
+%  1. Replace [PLACEHOLDERS] with your content (search for "REPLACE")
+%  2. Drop your logo into the same folder, update \includegraphics path
+%  3. Add references to references.bib
+%  4. Adjust accent colors in the palette section if you have a CI
+%  5. Compile: pdflatex -> bibtex -> pdflatex -> pdflatex
+%
+%  CARD TYPES
+%  ----------
+%  cardblock        primary section (blue header)
+%  cardblockaccent  highlight section (teal header)
+%  cardblockmuted   low-emphasis section like References (light header)
+% =====================================================================
+\documentclass[final,t]{beamer}
+\usepackage[size=a0,orientation=portrait,scale=1.25]{beamerposter}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{fontawesome5}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\usepackage{cite}
+\usepackage[most]{tcolorbox}
+\usepackage{qrcode}
+
+% --- Color palette (REPLACE with your CI colors if available) ---
+\definecolor{accentBlue}  {RGB}{ 11, 64,115}   % deep blue, primary
+\definecolor{accentTeal}  {RGB}{  0,138,162}   % teal accent
+\definecolor{accentLight} {RGB}{233,240,247}   % background tint
+\definecolor{accentDark}  {RGB}{ 34, 45, 60}   % body text
+\definecolor{accentMuted} {RGB}{110,120,135}   % captions, footer
+\definecolor{posterBg}    {RGB}{242,246,250}   % poster page background
+\definecolor{cardEdge}    {RGB}{220,228,236}   % subtle card border
+
+% --- Beamer theme tweaks ---
+\usetheme{default}
+\setbeamercolor{background canvas}{bg=posterBg}
+\setbeamercolor{itemize item}{fg=accentTeal}
+\setbeamercolor{itemize subitem}{fg=accentTeal}
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamertemplate{itemize item}{\textbf{\textcolor{accentTeal}{$\blacktriangleright$}}}
+\setbeamertemplate{itemize subitem}{\textcolor{accentTeal}{\textbullet}}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamercolor{caption name}{fg=accentBlue}
+
+% --- Modern card-style block (tcolorbox) ---
+% Full-width colored title strip on top of a white card.
+\newtcolorbox{cardblock}[1]{%
+  enhanced,
+  breakable=false,
+  colback=white,
+  colframe=cardEdge,
+  colbacktitle=accentBlue,
+  coltitle=white,
+  fonttitle=\Large\bfseries,
+  title={#1},
+  arc=2mm,
+  outer arc=2mm,
+  boxrule=0.6pt,
+  titlerule=0pt,
+  toptitle=7mm,
+  bottomtitle=7mm,
+  lefttitle=10mm,
+  righttitle=10mm,
+  left=10mm,right=10mm,top=8mm,bottom=8mm,
+  drop fuzzy shadow={cardEdge!60!black},
+  before skip=12pt,
+  after skip=14pt,
+  before upper={\color{accentDark}},
+  fontupper=\normalsize,
+}
+
+% Accent variant: teal title bar (e.g. for highlight cards)
+\newtcolorbox{cardblockaccent}[1]{%
+  enhanced,
+  breakable=false,
+  colback=white,
+  colframe=cardEdge,
+  colbacktitle=accentTeal,
+  coltitle=white,
+  fonttitle=\Large\bfseries,
+  title={#1},
+  arc=2mm,
+  outer arc=2mm,
+  boxrule=0.6pt,
+  titlerule=0pt,
+  toptitle=7mm,bottomtitle=7mm,
+  lefttitle=10mm,righttitle=10mm,
+  left=10mm,right=10mm,top=8mm,bottom=8mm,
+  drop fuzzy shadow={cardEdge!60!black},
+  before skip=12pt,after skip=14pt,
+  before upper={\color{accentDark}},
+  fontupper=\normalsize,
+}
+
+% Muted variant: low-emphasis card (for references, footnotes-like content)
+\newtcolorbox{cardblockmuted}[1]{%
+  enhanced,
+  breakable=false,
+  colback=white,
+  colframe=cardEdge,
+  colbacktitle=accentLight,
+  coltitle=accentMuted,
+  fonttitle=\normalsize\bfseries,
+  title={#1},
+  arc=2mm,
+  outer arc=2mm,
+  boxrule=0.4pt,
+  titlerule=0pt,
+  toptitle=3mm,bottomtitle=3mm,
+  lefttitle=8mm,righttitle=8mm,
+  left=8mm,right=8mm,top=4mm,bottom=4mm,
+  drop fuzzy shadow={cardEdge!60!black},
+  before skip=12pt,after skip=14pt,
+  before upper={\color{accentDark}},
+  fontupper=\footnotesize,
+}
+
+% --- Layout sizes ---
+\newlength{\colw}
+\setlength{\colw}{0.475\paperwidth}
+\setlength{\parskip}{0.4em}
+
+% --- Requirement-tag pill (like a GitHub label) ---
+\newcommand{\reqtag}[1]{%
+  \tcbox[on line,
+         colback=accentLight,colframe=accentBlue!25,
+         boxsep=1pt,left=4pt,right=4pt,top=1pt,bottom=1pt,
+         arc=2pt,boxrule=0.3pt]{%
+    \footnotesize\textcolor{accentBlue}{\textbf{#1}}}%
+}
+
+% --- Placeholder helpers (TikZ-drawn; replace with \includegraphics) ---
+% Used so the template compiles without external assets. Swap each
+% \placeholderLogo / \placeholderFigure call for \includegraphics{...}.
+\newcommand{\placeholderLogo}[1][5cm]{%
+  \begin{tikzpicture}
+    \node[draw=cardEdge,fill=accentLight,minimum height=#1,
+          minimum width=#1*1.4,align=center,font=\large\bfseries,
+          text=accentMuted]{LOGO};
+  \end{tikzpicture}%
+}
+\newcommand{\placeholderFigure}[1][0.98\linewidth]{%
+  \begin{tikzpicture}
+    \node[draw=cardEdge,fill=accentLight,minimum width=#1,
+          minimum height=10cm,align=center,font=\Large\bfseries,
+          text=accentMuted]{FIGURE PLACEHOLDER\\[0.4em]
+          \mdseries\normalsize replace with \texttt{\textbackslash includegraphics\{...\}}};
+  \end{tikzpicture}%
+}
+
+% --- Header / footer color bands ---
+\newcommand{\posterHeader}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[accentBlue] ([yshift=0pt]current page.north west)
+        rectangle ([yshift=-13cm]current page.north east);
+    \fill[accentTeal] ([yshift=-13cm]current page.north west)
+        rectangle ([yshift=-13.4cm]current page.north east);
+  \end{tikzpicture}%
+}
+
+\newcommand{\posterFooter}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[accentBlue]  ([yshift=4.5cm]current page.south west)
+        rectangle ([yshift=0cm]current page.south east);
+    \fill[accentTeal]  ([yshift=4.5cm]current page.south west)
+        rectangle ([yshift=4.7cm]current page.south east);
+  \end{tikzpicture}%
+}
+
+% =====================================================================
+\begin{document}
+\begin{frame}[t]
+
+% ---------- HEADER ----------
+\posterHeader
+\begin{tikzpicture}[remember picture,overlay]
+  % Logo top-left  (REPLACE: \placeholderLogo -> \includegraphics[height=5cm]{your_logo.png})
+  \node[anchor=north west,inner sep=0pt]
+        at ([xshift=2cm,yshift=-3cm]current page.north west)
+        {\placeholderLogo};
+
+  % Conference badge top-right  (REPLACE: conference name + tagline)
+  \node[anchor=north east,align=right,text=white,
+        font=\fontsize{50}{56}\selectfont\bfseries,
+        text width=13cm]
+        at ([xshift=-2cm,yshift=-3cm]current page.north east)
+        {\color{white}CONF 20XX\\[0.25em]
+         \fontsize{30}{38}\selectfont\mdseries\color{white}%
+         Full Conference Name\\Subtitle if any\par};
+
+  % Title block (centered)  (REPLACE: title + authors + affiliations)
+  \node[anchor=north,align=center,text=white,
+        text width=0.62\paperwidth]
+        at ([yshift=-2.2cm]current page.north)
+        {\fontsize{60}{72}\selectfont\bfseries\color{white}
+         Your Poster Title Goes Here\\[0.15em]
+         Optional Subtitle Line\par
+         \vspace{0.6em}
+         \fontsize{32}{40}\selectfont\mdseries\color{white}
+         First Author\textsuperscript{1} \;\; Second Author\textsuperscript{2} \;\;
+         Third Author\textsuperscript{1}\par
+         \vspace{0.6em}
+         \fontsize{26}{32}\selectfont\mdseries\color{white}
+         \textsuperscript{1}First Affiliation, Country \quad
+         \textsuperscript{2}Second Affiliation, Country};
+\end{tikzpicture}
+\vspace{11.5cm}
+
+% ---------- BODY: TWO COLUMNS ----------
+\begin{columns}[t]
+
+% =========================================================
+% LEFT COLUMN
+% =========================================================
+\begin{column}{\colw}
+
+% --- Card with paragraph + bullet list ---
+\begin{cardblock}{\faLightbulb~Motivation}
+\justifying
+Short opening paragraph that frames the problem in 2--3 sentences.
+End with a punchy stat or claim that motivates the work, ideally
+\textbf{bold-highlighted}~\cite{placeholderRef2025}.
+\vspace{0.3em}
+\begin{itemize}[leftmargin=*,itemsep=0.25em,label=\textcolor{accentTeal}{$\bullet$}]
+  \item Gap or pain point one --- short and concrete.
+  \item Gap or pain point two with \textbf{key term} highlighted.
+  \item Gap or pain point three motivating your approach.
+\end{itemize}
+\end{cardblock}
+
+% --- Card with numbered list + QR code box ---
+\begin{cardblock}{\faBullseye~Contributions}
+\begin{enumerate}[label=\textbf{\textcolor{accentTeal}{\arabic*.}},leftmargin=*,itemsep=0.25em]
+  \item First contribution sentence with \textbf{key term}.
+  \item Second contribution sentence.
+  \item Third contribution sentence.
+\end{enumerate}
+\vspace{0.4em}
+% Two QR codes side by side: code repo + paper PDF
+\begin{center}
+\colorbox{accentLight}{\parbox{0.93\linewidth}{%
+\centering
+\begin{minipage}{0.48\linewidth}\centering
+  \begin{minipage}[c]{6cm}\centering
+    {\setlength{\fboxsep}{1mm}\fcolorbox{cardEdge}{white}{%
+      \resizebox{5.5cm}{!}{\qrcode{https://github.com/your-org/your-repo}}%
+    }}%
+  \end{minipage}\hspace{0.5cm}%
+  \begin{minipage}[c]{4.5cm}\raggedright
+    \mbox{\large\faGithub~\textbf{Code}}
+  \end{minipage}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}\centering
+  \begin{minipage}[c]{6cm}\centering
+    {\setlength{\fboxsep}{1mm}\fcolorbox{cardEdge}{white}{%
+      \resizebox{5.5cm}{!}{\qrcode{https://arxiv.org/abs/XXXX.XXXXX}}%
+    }}%
+  \end{minipage}\hspace{0.5cm}%
+  \begin{minipage}[c]{4.5cm}\raggedright
+    \mbox{\large\faFilePdf~\textbf{Paper}}
+  \end{minipage}
+\end{minipage}%
+}}
+\end{center}
+\end{cardblock}
+
+% --- Card with two-column item list ---
+\begin{cardblock}{\faListUl~Requirements / Criteria}
+Optional intro sentence describing the source of the list.
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\textbf{\textcolor{accentTeal}{\arabic*.}},leftmargin=*,itemsep=0.25em]
+  \item Item one
+  \item Item two
+  \item Item three
+  \item Item four
+  \item Item five
+  \item Item six
+  \item Item seven
+  \item Item eight
+\end{enumerate}
+\end{multicols}
+\end{cardblock}
+
+% --- Card with figure + caption ---
+\begin{cardblock}{\faProjectDiagram~Approach / Architecture}
+\justifying
+One or two sentences explaining what the figure shows.
+\begin{center}
+\placeholderFigure
+\end{center}
+{\color{accentMuted}
+Figure caption explaining details and color coding.}
+\end{cardblock}
+
+\end{column}
+
+% =========================================================
+% RIGHT COLUMN
+% =========================================================
+\begin{column}{\colw}
+
+% --- Card with figure + concise message ---
+\begin{cardblock}{\faServer~Second Figure / Method}
+\justifying
+Concise sentence that frames the figure or method.
+\begin{center}
+\placeholderFigure
+\end{center}
+{\color{accentMuted}
+Caption with key takeaway.}
+\end{cardblock}
+
+% --- Card with bullets and req-tags ---
+\begin{cardblock}{\faCogs~Components / Items}
+\begin{itemize}[leftmargin=0pt,labelsep=0.5em,itemsep=0.55em]\raggedright
+  \item \textbf{Component A}: short description.
+        \reqtag{Requirement Tag}
+  \item \textbf{Component B}: short description.
+        \reqtag{Tag One}\, \reqtag{Tag Two}
+  \item \textbf{Component C}: short description.
+        \reqtag{Another Requirement}
+\end{itemize}
+\end{cardblock}
+
+% --- Card with 3-column trade-offs table ---
+\begin{cardblock}{\faBalanceScale~Trade-offs / Decisions}
+\vspace{-4mm}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}p{0.32\linewidth}@{\hspace{8mm}}Y@{\hspace{6mm}}Y@{}}
+\toprule
+\textbf{Decision} & \textbf{Benefit} & \textbf{Cost} \\
+\midrule
+Decision label one    & key benefit phrase                  & key cost phrase \\
+Decision label two\par\small\textit{optional sub-spec} & benefit phrase    & cost phrase \\
+Decision label three  & benefit phrase                      & cost phrase \\
+Decision label four   & benefit phrase                      & cost phrase \\
+\bottomrule
+\end{tabularx}
+\vspace{-4mm}
+\end{cardblock}
+
+% --- Card with summary + future work + highlight box ---
+\begin{cardblock}{\faChartLine~Summary \& Future Work}
+\justifying
+One-paragraph summary of what was built and how it operationalizes the
+underlying idea.
+
+\vspace{0.3em}
+\textbf{Next steps:}
+\begin{itemize}[leftmargin=*,itemsep=0.25em,label=\textcolor{accentTeal}{$\bullet$}]
+  \item Next-step bullet one.
+  \item Next-step bullet two.
+  \item Next-step bullet three.
+\end{itemize}
+
+\vspace{0.3em}
+\colorbox{accentLight}{\parbox{0.93\linewidth}{\centering
+\textbf{Goal:} One-line takeaway / call-to-action for visitors.}}
+\end{cardblock}
+
+% --- Muted card for references (small font, light header) ---
+\begin{cardblockmuted}{\faBookOpen~Selected References}
+\setbeamertemplate{bibliography item}[text]
+\setbeamercolor{bibliography item}{fg=accentDark}
+\setbeamercolor{bibliography entry author}{fg=accentDark}
+\setbeamercolor{bibliography entry title}{fg=accentDark}
+\setbeamercolor{bibliography entry location}{fg=accentDark}
+\setbeamercolor{bibliography entry note}{fg=accentDark}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{cardblockmuted}
+
+\end{column}
+\end{columns}
+
+% ---------- FOOTER ----------
+\posterFooter
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south west,text=white,font=\normalsize]
+       at ([xshift=2cm,yshift=1.4cm]current page.south west)
+       {\faEnvelope~\texttt{your.email@institution.edu} \quad
+        \faLinkedin~\texttt{your-linkedin} \quad
+        \faOrcid~\texttt{0000-0000-0000-0000}};
+  \node[anchor=south east,text=white,font=\normalsize\itshape]
+       at ([xshift=-2cm,yshift=1.4cm]current page.south east)
+       {CONF 20XX --- Track Name};
+\end{tikzpicture}
+
+\end{frame}
+\end{document}
