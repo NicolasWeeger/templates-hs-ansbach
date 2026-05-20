@@ -3,57 +3,61 @@
 /*
  * Hochschule Ansbach — Marp Theme
  * --------------------------------
- * Autor:   Prof. Nicolas Weeger (nicolas.weeger@hs-ansbach.de)
+ * Author:  Prof. Nicolas Weeger (nicolas.weeger@hs-ansbach.de)
  * Version: 1.0
  *
- * Benutzung in einer .md-Datei:
+ * Usage in a .md file:
  *   ---
  *   marp: true
- *   theme: hs-ansbach-weeger
+ *   theme: hs-ansbach-grün
  *   paginate: true
- *   footer: "Mein Veranstaltungstitel"
+ *   footer: "My lecture title"
  *   ---
  *
- * Aufruf (Marp CLI):
- *   marp --theme-set themes/hs-ansbach-weeger.css foo.md
+ * Marp CLI:
+ *   marp --theme-set themes/hs-ansbach-grün.css foo.md
  *
- * Oder in .marprc.yml:
+ * Or via .marprc.yml:
  *   themeSet: "./themes"
  *
  * Assets:
- *   hintergrund_hs_ansbach_grün.png  (Pflicht, liegt direkt neben dieser CSS-Datei)
+ *   The HS Ansbach background image is embedded as a base64 data URI
+ *   directly in this CSS — no external asset needed.
  *
- * Verfügbare Folien-Klassen (per <!-- _class: XXX -->):
- *   title           Titelfolie (zentriert, ohne Footer/Seitenzahl)
- *   split           Zwei Spalten 50/50 (Inhalt in <div>...</div>-Blöcken)
+ * Layout classes (set via <!-- _class: XXX --> as first line of slide):
+ *   title           Title slide (centered, no footer, no page number)
+ *   split           Two columns 50/50 (content in <div>...</div> blocks)
  *   split-60        60/40
  *   split-40        40/60
  *   split-30        30/70
+ *   compact         Reduce font-size to 20px (for dense content)
+ *   dense           Reduce font-size to 18px (for very dense content)
  *
- * Inline-Klassen:
- *   .center         Block zentrieren (für QR-Codes, Logos)
- *   .quelle         Kleine kursive Quellenangabe, rechtsbündig
+ * Inline classes:
+ *   .center         Center block content (QR codes, logos)
+ *   .source         Small italic right-aligned source attribution
+ *   .below-title    In split layouts: place column below the title row
  */
 
 @import 'default';
 
 /* ============================================================
- * Grundlayout — grüner HS-Ansbach-Header auf jeder Folie
+ * Base layout — green HS Ansbach background on every slide
  * ============================================================ */
 
 section {
     /* ============================================================
-   * ZENTRALE KONFIGURATION
-   * Hier die beiden Zeilen anpassen — gilt automatisch für ALLE
-   * Foliendateien, die `theme: hs-ansbach-grün` benutzen.
+   * CENTRAL CONFIGURATION
+   * Edit the two lines below — applies automatically to ALL slide
+   * files that use `theme: hs-ansbach-grün`.
    *
-   * Pro-Deck-Override (z.B. ein einzelner Vortrag mit anderem Titel)
-   * im YAML-Frontmatter der jeweiligen .md:
+   * Per-deck override (e.g. a single guest lecture with a different
+   * title) — in the YAML frontmatter of that .md file:
    *   style: |
-   *     section { --vorlesung-titel: 'Sonderfall'; }
+   *     section { --course-title: 'Special case'; }
    * ============================================================ */
-    --dozent-name: 'Prof. Dr. Mustermann';
-    --vorlesung-titel: 'Dies und das';
+    --lecturer-name: 'Prof. Dr. Mustermann';
+    --course-title: 'Dies und das';
 
     font-size: 24px;
     padding-top: 120px;
@@ -65,16 +69,26 @@ section {
 }
 
 code {
-    font-size: 20px;
+    /* Relative to section font-size so code shrinks proportionally
+       with .compact / .dense (20/24 ≈ 0.83). */
+    font-size: 0.83em;
 }
 
 /* ============================================================
- * Master-Footer
+ * Font-size modifiers — add to the layout class for dense slides,
+ * e.g. `<!-- _class: split compact -->`.
  * ============================================================ */
 
-/* Footer unten links: Marp braucht einen `footer:`-Wert im Frontmatter
-   als Trigger, damit das <footer>-Element überhaupt erzeugt wird.
-   Der eigentliche Inhalt kommt aus --vorlesung-titel (siehe oben). */
+section.compact  { font-size: 20px; }
+section.dense { font-size: 18px; }
+
+/* ============================================================
+ * Master footer
+ * ============================================================ */
+
+/* Footer bottom-left: Marp needs any `footer:` value in the frontmatter
+   as a trigger so the <footer> element is rendered at all.
+   The actual content comes from --course-title (see above). */
 footer {
     left: 30px;
     bottom: 25px;
@@ -82,14 +96,14 @@ footer {
 }
 
 footer::before {
-    content: var(--vorlesung-titel);
+    content: var(--course-title);
     font-size: 14px;
     color: #555;
 }
 
-/* Dozent-Name unten Mitte */
+/* Lecturer name, bottom center */
 section::before {
-    content: var(--dozent-name);
+    content: var(--lecturer-name);
     position: absolute;
     left: 50%;
     bottom: 25px;
@@ -98,7 +112,7 @@ section::before {
     color: #555;
 }
 
-/* Seitenzahl unten rechts */
+/* Page number, bottom right */
 section::after {
     right: 30px;
     bottom: 25px;
@@ -107,13 +121,13 @@ section::after {
 }
 
 /* ============================================================
- * Split-Layouts (zwei Spalten)
+ * Split layouts (two columns)
  *
- * Nutzung:
+ * Usage:
  *   <!-- _class: split-40 -->
- *   # Titel
- *   <div> ... linke Spalte ... </div>
- *   <div> ... rechte Spalte ... </div>
+ *   # Title
+ *   <div> ... left column ... </div>
+ *   <div> ... right column ... </div>
  * ============================================================ */
 
 section.split,
@@ -143,7 +157,7 @@ section.split-30 {
     grid-template-columns: 30% 70%;
 }
 
-/* H1: linke Spalte, direkt über dem Text */
+/* H1: left column, directly above the text */
 section.split>h1,
 section.split-60>h1,
 section.split-40>h1,
@@ -154,7 +168,7 @@ section.split-30>h1 {
     margin-bottom: 0.3em;
 }
 
-/* Linker Content: unter dem Titel */
+/* Left column content: below the title */
 section.split>div:first-of-type,
 section.split-60>div:first-of-type,
 section.split-40>div:first-of-type,
@@ -163,9 +177,9 @@ section.split-30>div:first-of-type {
     grid-row: 2;
 }
 
-/* Rechter Content: spannt über beide Zeilen, vertikal zentriert.
-   Damit beeinflusst ein großes Bild rechts NICHT die Position des
-   Titels über der linken Spalte. */
+/* Right column content: spans both rows, vertically centered.
+   This means a large image on the right does NOT shift the title
+   position above the left column. */
 section.split>div:nth-of-type(2),
 section.split-60>div:nth-of-type(2),
 section.split-40>div:nth-of-type(2),
@@ -174,26 +188,26 @@ section.split-30>div:nth-of-type(2) {
     grid-row: 1 / -1;
 }
 
-/* Modifier: <div class="unter-titel"> in einer Split-Folie nimmt die
-   Spalte aus der Titelzeile heraus und platziert sie nur in Zeile 2.
-   So liegen rechter und linker Textblock auf derselben Höhe
-   (statt dass die rechte Spalte über die gesamte Folie zentriert
-   wird und damit „neben" dem Titel landet). */
-section.split    > div.unter-titel,
-section.split-60 > div.unter-titel,
-section.split-40 > div.unter-titel,
-section.split-30 > div.unter-titel {
+/* Modifier: <div class="below-title"> in a split slide pulls the
+   column out of the title row and places it in row 2 only. As a
+   result, the left and right text blocks line up at the same height
+   (instead of the right column being centered over the full slide
+   and ending up "next to" the title). */
+section.split    > div.below-title,
+section.split-60 > div.below-title,
+section.split-40 > div.below-title,
+section.split-30 > div.below-title {
     grid-row: 2;
 }
 
 /* ============================================================
- * Titelfolie
+ * Title slide
  *
- * Nutzung:
+ * Usage:
  *   <!-- _class: title -->
- *   # Haupttitel
- *   ### Untertitel
- *   Zeile 3 (kleiner, grau)
+ *   # Main title
+ *   ### Subtitle
+ *   Line 3 (smaller, gray)
  * ============================================================ */
 
 section.title {
@@ -231,12 +245,12 @@ section.title footer {
 }
 
 /* ============================================================
- * Utility-Klassen
+ * Utility classes
  * ============================================================ */
 
-/* Kleine, kursive, rechtsbündige Quellenangabe
-   Nutzung: <span class="quelle">Quelle: ...</span>           */
-.quelle {
+/* Small italic right-aligned source attribution.
+   Usage: <span class="source">Source: ...</span>            */
+.source {
     font-size: 16px;
     color: #555;
     font-style: italic;
@@ -245,8 +259,8 @@ section.title footer {
     margin-top: 0.3em;
 }
 
-/* Block-Content zentrieren (z.B. für QR-Codes)
-   Nutzung:  <div class="center"> ![](qr.png) </div>          */
+/* Center block content (e.g. for QR codes).
+   Usage:  <div class="center"> ![](qr.png) </div>            */
 .center {
     text-align: center;
 }

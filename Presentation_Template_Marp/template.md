@@ -18,7 +18,10 @@ Prof. Dr. Mustermann · Hochschule Ansbach
 
 [//]: # (Diese Zeile ist ein "Markdown-only"-Kommentar: nur im .md-Source sichtbar, weder auf der Folie noch im Presenter-Mode. Beispiel weiter unten auf der Kommentar-Folie.)
 
+
 ---
+
+<!--- _class: compact -->
 
 # Gliederung
 
@@ -29,10 +32,11 @@ Prof. Dr. Mustermann · Hochschule Ansbach
 5. [Bilder](#7)
 6. [Split 50/50](#8)
 7. [Split 60/40](#9)
-8. [Split 40/60 + `.unter-titel`-Modifier](#10)
+8. [Split 40/60 + `.below-title`-Modifier](#10)
 9. [Split 30/70](#11)
-10. [Inline-Klassen `.center` und `.quelle`](#12)
+10. [Inline-Klassen `.center` und `.source`](#12)
 11. [Kommentare & Speaker Notes](#13)
+12. [Schriftgrößen — `.compact` und `.dense`](#14)
 
 <!-- Die Anker `#N` springen im HTML-Export (Bespoke) direkt zur Folie N.
      In der VS-Code-Preview funktionieren sie nicht zuverlässig. -->
@@ -45,10 +49,10 @@ Wenn diese Folie:
 
 - den grünen HS-Ansbach-Hintergrund zeigt,
 - "Prof. Dr. Mustermann" unten in der Mitte hat (CSS-Variable
-  `--dozent-name` in [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css)),
+  `--lecturer-name` in [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css)),
 - die Seitenzahl unten rechts hat,
 - den Footer "Vorlesungstitel" unten links hat (CSS-Variable
-  `--vorlesung-titel`),
+  `--course-title`),
 
 → greift das Theme korrekt. Ändere die beiden Variablen ganz oben in
 der CSS-Datei, dann gilt es automatisch für alle Decks.
@@ -89,7 +93,7 @@ Code-Block:
 
 ```python
 def calculate_discount(price: float, percent: float) -> float:
-    """Berechnet Rabatt mit aussagekräftigen Namen."""
+    """Calculate discount amount using meaningful names."""
     return price * percent / 100
 ```
 
@@ -106,9 +110,9 @@ Code-Blöcke werden in Monospace mit kleinerer Schrift gerendert
 | `<!-- _class: title -->` | Titelfolie | Folie 1 |
 | `<!-- _class: split -->` | 2 Spalten 50/50 | Folie 8 |
 | `<!-- _class: split-60 -->` | 2 Spalten 60/40 | Folie 9 |
-| `.unter-titel` | Spalten auf gleicher Höhe | Folie 10 |
+| `.below-title` | Spalten auf gleicher Höhe | Folie 10 |
 | `.center` | Block zentrieren | Folie 12 |
-| `.quelle` | Quellenangabe | Folie 12 |
+| `.source` | Quellenangabe | Folie 12 |
 
 Spalten links-/zentriert-/rechtsbündig via `|:--|:-:|--:|` in der
 zweiten Tabellenzeile.
@@ -186,24 +190,24 @@ Mehr Platz links für Erklärtext oder längere Aufzählungen.
 
 <!-- _class: split-40 -->
 
-# Split 40/60 + `.unter-titel`
+# Split 40/60 + `.below-title`
 
 <div>
 
-Kompakter Text links. Ohne `.unter-titel` wäre die rechte Spalte
+Kompakter Text links. Ohne `.below-title` wäre die rechte Spalte
 über die **ganze Folienhöhe** vertikal zentriert (würde also höher
 sitzen als dieser Text hier).
 
-Mit `<div class="unter-titel">` startet die rechte Spalte erst
+Mit `<div class="below-title">` startet die rechte Spalte erst
 **unter** dem Titel — beide Textblöcke auf gleicher Höhe.
 
 </div>
 
-<div class="unter-titel">
+<div class="below-title">
 
 ```python
 def greet(name: str) -> str:
-    return f"Hallo {name}!"
+    return f"Hello, {name}!"
 ```
 
 Code in der rechten Spalte, jetzt auf Augenhöhe mit dem linken Text.
@@ -234,7 +238,7 @@ Schmale linke Spalte für Schlagworte oder kleine Bilder.
 
 ---
 
-# Inline-Klassen: `.center` und `.quelle`
+# Inline-Klassen: `.center` und `.source`
 
 <div class="center">
 
@@ -246,9 +250,9 @@ Schmale linke Spalte für Schlagworte oder kleine Bilder.
 
 Aussage mit wissenschaftlicher Referenz¹.
 
-<span class="quelle">¹ Autor, A. *Titel der Arbeit.* Konferenz, Jahr. https://example.org</span>
+<span class="source">¹ Autor, A. *Titel der Arbeit.* Konferenz, Jahr. https://example.org</span>
 
-<!-- .quelle: kleine, kursive, rechtsbündige Quellenangabe. -->
+<!-- .source: kleine, kursive, rechtsbündige Quellenangabe. -->
 
 ---
 
@@ -290,10 +294,42 @@ Sichtbarkeit auf einen Blick:
 
 ---
 
+<!-- _class: dense -->
+
+# Schriftgrößen — `.compact` und `.dense`
+
+Wenn eine Folie viel Inhalt hat, kannst du die Schriftgröße per Klasse
+reduzieren — kombinierbar mit jedem Layout:
+
+| Klasse | font-size | Wann verwenden |
+|---|---|---|
+| _Default_ | 24 px | Normaler Inhalt |
+| `.compact` | 20 px | Dichter Text, mehr Bullet-Points |
+| `.dense` | 18 px | Sehr dichte Detail- oder Übersichtsfolien |
+
+Aktivierung in der `_class:`-Direktive, kombinierbar mit Layout-Klassen
+durch Space:
+
+```markdown
+<!-- _class: compact -->
+<!-- _class: split compact -->
+<!-- _class: split-60 dense -->
+```
+
+Diese Folie hat `_class: compact` — Schriftgröße 20 px statt 24.
+Code-Blöcke und Inline-Code (`font-size: 0.83em`) skalieren proportional
+mit, sodass das visuelle Verhältnis erhalten bleibt.
+
+<!-- Hinweis: Echtes Auto-Fit (Schriftgröße misst Inhaltsmenge) ist in
+     CSS nicht zuverlässig möglich. Diese manuellen Stufen sind robust
+     und funktionieren in Preview, HTML-, PDF- und PPTX-Export gleich. -->
+
+---
+
 <!-- _class: title -->
 
 # Vielen Dank!
 
 ### Fragen?
 
-✉ nicolas.weeger@hs-ansbach.de · 🏢 Raum 50.1.2
+✉ max.mustermann@hs-ansbach.de · 🏢 Raum 10.1.23

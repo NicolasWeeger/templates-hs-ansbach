@@ -13,7 +13,7 @@ Beispieldeck mit allen Funktionen → [`template.md`](template.md).
 - [Schnellstart](#schnellstart)
 - [Theme konfigurieren (zentrale Stelle)](#theme-konfigurieren-zentrale-stelle)
 - [Folienklassen (Layout)](#folienklassen-layout)
-  - [Spalten auf gleicher Höhe: `.unter-titel`](#spalten-auf-gleicher-höhe-unter-titel)
+  - [Spalten auf gleicher Höhe: `.below-title`](#spalten-auf-gleicher-höhe-below-title)
 - [Inline-Klassen](#inline-klassen)
 - [Markdown-Features im Überblick](#markdown-features-im-überblick)
   - [Gliederung mit Sprung-Links](#gliederung-mit-sprung-links)
@@ -86,8 +86,8 @@ In [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css) ganz oben
 im `section { ... }`-Block, im `ZENTRALE KONFIGURATION`-Abschnitt:
 
 ```css
---dozent-name: 'Prof. Dr. Mustermann';
---vorlesung-titel: 'Vorlesungstitel';
+--lecturer-name: 'Prof. Dr. Mustermann';
+--course-title: 'Vorlesungstitel';
 ```
 
 Beide Werte ändern → wirkt automatisch auf **alle** Foliendateien, die
@@ -98,7 +98,7 @@ Titel): im YAML-Frontmatter der jeweiligen `.md`:
 
 ```yaml
 style: |
-  section { --vorlesung-titel: 'Sonderfall'; }
+  section { --course-title: 'Sonderfall'; }
 ```
 
 ## Folienklassen (Layout)
@@ -112,6 +112,18 @@ Per HTML-Kommentar als **erste Zeile** der Folie aktivieren:
 | `<!-- _class: split-60 -->` | 2 Spalten 60/40 | Folie 9 |
 | `<!-- _class: split-40 -->` | 2 Spalten 40/60 | Folie 10 |
 | `<!-- _class: split-30 -->` | 2 Spalten 30/70 | Folie 11 |
+| `<!-- _class: compact -->` | Schriftgröße 20 px statt 24 (für dichte Folien) | Folie 14 |
+| `<!-- _class: dense -->` | Schriftgröße 18 px (für sehr dichte Folien) | Folie 14 |
+
+**Klassen sind kombinierbar** — mehrere Klassen durch Space getrennt:
+
+```markdown
+<!-- _class: split compact -->
+<!-- _class: split-60 dense -->
+```
+
+Code-Blöcke nutzen `font-size: 0.83em` (relativ), skalieren also mit
+`.compact` / `.dense` proportional mit.
 
 **Konvention für Split-Folien:**
 
@@ -133,12 +145,12 @@ Rechte Spalte (vertikal über die ganze Folienhöhe zentriert)
 </div>
 ```
 
-### Spalten auf gleicher Höhe: `.unter-titel`
+### Spalten auf gleicher Höhe: `.below-title`
 
 Standardmäßig wird die **rechte Spalte über die ganze Folienhöhe**
 vertikal zentriert — sie sitzt damit „neben" dem Titel, also höher
 als der linke Text. Wenn du beide Spalten auf gleicher Höhe haben
-willst, leg `class="unter-titel"` auf den rechten `<div>`:
+willst, leg `class="below-title"` auf den rechten `<div>`:
 
 ```markdown
 <!-- _class: split-40 -->
@@ -151,7 +163,7 @@ Linker Text (unter dem Titel).
 
 </div>
 
-<div class="unter-titel">
+<div class="below-title">
 
 Rechter Text — startet erst unter dem Titel, auf gleicher Höhe
 wie der linke.
@@ -166,10 +178,10 @@ Demo: [template.md](template.md) Folie 10.
 | Klasse | Wirkung | Beispiel |
 |---|---|---|
 | `.center` | Block-Inhalt zentrieren (Logos, QR-Codes) | `<div class="center">![](qr.png)</div>` |
-| `.quelle` | Kleine kursive Quellenangabe, rechtsbündig | `<span class="quelle">Quelle: …</span>` |
-| `.unter-titel` | Spalte einer Split-Folie unter dem Titel positionieren | `<div class="unter-titel">…</div>` |
+| `.source` | Kleine kursive Quellenangabe, rechtsbündig | `<span class="source">Quelle: …</span>` |
+| `.below-title` | Spalte einer Split-Folie unter dem Titel positionieren | `<div class="below-title">…</div>` |
 
-Demo: [template.md](template.md) Folie 12 (`.center`/`.quelle`) und Folie 10 (`.unter-titel`).
+Demo: [template.md](template.md) Folie 12 (`.center`/`.source`) und Folie 10 (`.below-title`).
 
 ## Markdown-Features im Überblick
 
@@ -311,7 +323,7 @@ spätere CSS-Updates).
 | Footer **wird nicht angezeigt** | Im Frontmatter fehlt `footer:` — Marp emittiert ohne Direktive kein `<footer>`-Element, das Pseudo-Element greift dann nicht. Beliebigen Wert setzen, z.B. `footer: " "`. |
 | Hintergrund **fehlt in PDF/PPTX-Export** | Sollte nicht passieren (base64-inline). Falls doch: prüfen, ob die CSS-Datei beim Export geladen wurde. |
 | Eigene Bilder **fehlen im Export** | Marp-CLI mit `--allow-local-files` aufrufen. |
-| Dozent oder Vorlesung **falsch** | In [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css) die CSS-Variablen `--dozent-name` und `--vorlesung-titel` ändern. |
+| Dozent oder Vorlesung **falsch** | In [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css) die CSS-Variablen `--lecturer-name` und `--course-title` ändern. |
 
 ## Contribution
 
