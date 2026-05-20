@@ -1,175 +1,139 @@
 ---
 marp: true
+theme: hs-ansbach-grün
 paginate: true
-footer: "Veranstaltungstitel hier eintragen"
-style: |
-  section {
-    font-size: 24px;
-    padding-top: 120px;
-    padding-bottom: 80px;
-    background-image: url('themes/hintergrund_hs_ansbach_grün.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-  }
-  code { font-size: 20px; }
-  footer {
-    left: 30px;
-    bottom: 25px;
-    font-size: 14px;
-    color: #555;
-  }
-  section::before {
-    content: 'Prof. Nicolas Weeger';
-    position: absolute;
-    left: 50%;
-    bottom: 25px;
-    transform: translateX(-50%);
-    font-size: 14px;
-    color: #555;
-  }
-  section::after {
-    right: 30px;
-    bottom: 25px;
-    font-size: 14px;
-    color: #555;
-  }
-  section.split,
-  section.split-60,
-  section.split-40,
-  section.split-30 {
-    display: grid;
-    grid-template-rows: auto auto;
-    gap: 0.3em 2em;
-    align-content: center;
-    align-items: center;
-  }
-  section.split    { grid-template-columns: 1fr 1fr; }
-  section.split-60 { grid-template-columns: 60% 40%; }
-  section.split-40 { grid-template-columns: 40% 60%; }
-  section.split-30 { grid-template-columns: 30% 70%; }
-  section.split    > h1,
-  section.split-60 > h1,
-  section.split-40 > h1,
-  section.split-30 > h1 {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: end;
-    margin-bottom: 0.3em;
-  }
-  section.split    > div:first-of-type,
-  section.split-60 > div:first-of-type,
-  section.split-40 > div:first-of-type,
-  section.split-30 > div:first-of-type {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  section.split    > div:nth-of-type(2),
-  section.split-60 > div:nth-of-type(2),
-  section.split-40 > div:nth-of-type(2),
-  section.split-30 > div:nth-of-type(2) {
-    grid-column: 2;
-    grid-row: 1 / -1;
-  }
-  section.title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-bottom: 0;
-  }
-  section.title h1 { font-size: 72px; margin-bottom: 0.1em; }
-  section.title h2,
-  section.title h3 { font-size: 32px; color: #555; font-weight: normal; margin-top: 0; }
-  section.title p  { font-size: 20px; color: #666; margin-top: 2em; }
-  section.title::before,
-  section.title::after,
-  section.title footer { display: none; }
-  .quelle {
-    font-size: 16px;
-    color: #555;
-    font-style: italic;
-    text-align: right;
-    display: block;
-    margin-top: 0.3em;
-  }
-  .center { text-align: center; }
-  .center img { display: inline-block; }
+footer: "Vorlesungstitel"
 ---
-
-<!--
-=============================================================
-HS-Ansbach Marp Template (selbständig — Style inline)
-=============================================================
-
-Wie es funktioniert:
-  - Das komplette Theme-CSS steht im YAML-Frontmatter (style:).
-  - Die Datei ist self-contained: kein Theme-Setup in VS Code,
-    keine .vscode/settings.json, kein @import nötig.
-  - Mitkopieren musst du nur den Bilder-Ordner themes/ (für den
-    Hintergrund) und ggf. images/ (für eigene Inhalte).
-
-Voraussetzung:
-  - Marp-Extension (marp-team.marp-vscode) installiert.
-  - themes/hintergrund_hs_ansbach_grün.png liegt NEBEN dieser
-    Markdown-Datei (im hs-ansbach-weeger-Repo bereits vorhanden).
-
-So benutzt:
-  1. template.md UND themes/-Ordner in dein Projekt kopieren:
-     cp template.md /pfad/zu/deinem/projekt/folien.md
-     cp -r themes  /pfad/zu/deinem/projekt/
-  2. Footer im Frontmatter anpassen
-  3. Inhalte in den Folien unten ersetzen
-  4. Bei Theme-Änderungen am zentralen CSS: das style-Block
-     manuell synchronisieren (oder neu aus dem zentralen
-     hs-ansbach-weeger.css kopieren).
-
-Verfügbare Folien-Klassen (per HTML-Kommentar als erste Zeile der Folie):
-  <!- - _class: title  - ->     Titelfolie (zentriert, ohne Footer/Seitenzahl)
-  <!- - _class: split  - ->     Zwei Spalten 50/50
-  <!- - _class: split-60 - ->   60/40
-  <!- - _class: split-40 - ->   40/60
-  <!- - _class: split-30 - ->   30/70
-
-Inline-Klassen:
-  .center         Block zentrieren (für QR-Codes, Logos)
-  .quelle         Kleine kursive Quellenangabe, rechtsbündig
-
-Konventionen für Split-Folien:
-  - H1 (#) gehört vor die <div>-Blöcke
-  - Linke Spalte:  erstes <div>...</div>
-  - Rechte Spalte: zweites <div>...</div>
-=============================================================
--->
 
 <!-- _class: title -->
 
-# Titel der Präsentation
+# HS Ansbach MARP Theme
 
-### Untertitel oder Modulname
+### Beispieldeck mit allen Theme-Funktionen
 
-Prof. Nicolas Weeger · Hochschule Ansbach
+Prof. Dr. Mustermann · Hochschule Ansbach
+
+<!-- Titelfolie: zentriert, ohne Footer und ohne Seitenzahl.
+     Aktiviert über `<!-- _class: title -->` als erste Zeile der Folie. -->
+
+[//]: # (Diese Zeile ist ein "Markdown-only"-Kommentar: nur im .md-Source sichtbar, weder auf der Folie noch im Presenter-Mode. Beispiel weiter unten auf der Kommentar-Folie.)
 
 ---
 
-# Standard-Folie mit Aufzählung
+# Gliederung
 
-Einleitungstext, der die Folie kurz einordnet.
+1. [Konfiguration & Theme-Status](#3)
+2. [Markdown-Grundlagen — Listen & Hervorhebung](#4)
+3. [Markdown-Grundlagen — Zitate & Code](#5)
+4. [Tabelle](#6)
+5. [Bilder](#7)
+6. [Split 50/50](#8)
+7. [Split 60/40](#9)
+8. [Split 40/60 + `.unter-titel`-Modifier](#10)
+9. [Split 30/70](#11)
+10. [Inline-Klassen `.center` und `.quelle`](#12)
+11. [Kommentare & Speaker Notes](#13)
+
+<!-- Die Anker `#N` springen im HTML-Export (Bespoke) direkt zur Folie N.
+     In der VS-Code-Preview funktionieren sie nicht zuverlässig. -->
+
+---
+
+# Konfiguration & Theme-Status
+
+Wenn diese Folie:
+
+- den grünen HS-Ansbach-Hintergrund zeigt,
+- "Prof. Dr. Mustermann" unten in der Mitte hat (CSS-Variable
+  `--dozent-name` in [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css)),
+- die Seitenzahl unten rechts hat,
+- den Footer "Vorlesungstitel" unten links hat (CSS-Variable
+  `--vorlesung-titel`),
+
+→ greift das Theme korrekt. Ändere die beiden Variablen ganz oben in
+der CSS-Datei, dann gilt es automatisch für alle Decks.
+
+<!-- Diese HTML-Kommentare auf einer Folie sind Speaker Notes —
+     im Presenter Mode (HTML-Export, Taste `p`) sichtbar, auf der
+     Folie selbst nicht. -->
+
+---
+
+# Markdown-Grundlagen — Listen & Hervorhebung
+
+**Fett** mit `**doppelten Sternen**`, *kursiv* mit `*einfachen*`,
+`inline-code` mit Backticks.
+
+Aufzählungen:
 
 - Erster Punkt
-- Zweiter Punkt mit **Hervorhebung**
+- Zweiter Punkt mit **Hervorhebung** und `code`
 - Dritter Punkt
 
-### Zwischenüberschrift
+Nummerierte Liste:
 
-Weiterer Text oder ein zusätzlicher Block.
+1. Schritt eins
+2. Schritt zwei
+3. Schritt drei
+
+---
+
+# Markdown-Grundlagen — Zitate & Code
+
+Zitate:
+
+> Zitate mit `>` als Präfix. Eignen sich gut für Hervorhebungen
+> oder zur Kennzeichnung wörtlicher Übernahmen.
+
+Code-Block:
+
+```python
+def calculate_discount(price: float, percent: float) -> float:
+    """Berechnet Rabatt mit aussagekräftigen Namen."""
+    return price * percent / 100
+```
+
+Code-Blöcke werden in Monospace mit kleinerer Schrift gerendert
+(font-size: 20px aus dem Theme). Sprachen z.B.: `python`, `bash`,
+`javascript`, `c++`, `yaml`, `json`.
+
+---
+
+# Tabelle
+
+| Funktion | Wirkung | Beispiel |
+|---|---|---|
+| `<!-- _class: title -->` | Titelfolie | Folie 1 |
+| `<!-- _class: split -->` | 2 Spalten 50/50 | Folie 8 |
+| `<!-- _class: split-60 -->` | 2 Spalten 60/40 | Folie 9 |
+| `.unter-titel` | Spalten auf gleicher Höhe | Folie 10 |
+| `.center` | Block zentrieren | Folie 12 |
+| `.quelle` | Quellenangabe | Folie 12 |
+
+Spalten links-/zentriert-/rechtsbündig via `|:--|:-:|--:|` in der
+zweiten Tabellenzeile.
+
+---
+
+# Bilder
+
+![w:200](images/Logo_HS_Ansbach.png)
+
+Bilder mit Größenangabe: `![w:200](pfad)` für Breite in Pixel,
+`![h:150]` für Höhe, beides kombinierbar.
+
+Als Hintergrund rechts (überlappt den restlichen Inhalt nicht):
+
+![bg right:35% w:70%](images/Logo_HS_Ansbach.png)
+
+Aufruf: `![bg right:35% w:70%](pfad)` — 35% der Folienbreite,
+Bild auf 70% dieser Breite skaliert.
 
 ---
 
 <!-- _class: split -->
 
-# Zwei Spalten 50/50
+# Split-Layout 50/50 — `_class: split`
 
 <div>
 
@@ -183,11 +147,16 @@ Weiterer Text oder ein zusätzlicher Block.
 
 <div>
 
+[//]: # (Eine Raute # ohne Text dahinter verschiebt die Spalte nach unten, Das macht bei Splits-Layouts Sinn, damit die beiden Inhalte der Spalten auf zentriert oder auf gleicher Höhe liegen)
+#  
+#
+#
+#
+
 ### Rechte Spalte
 
-> Zitat oder Hervorhebung passt hier gut hin.
-
-Weitere Inhalte rechts.
+> Vertikal über die ganze Folienhöhe zentriert, unabhängig vom
+> Titel auf der linken Seite.
 
 </div>
 
@@ -195,22 +164,21 @@ Weitere Inhalte rechts.
 
 <!-- _class: split-60 -->
 
-# Zwei Spalten 60/40
+# Split 60/40 — `_class: split-60`
 
 <div>
 
-Linke Spalte mit mehr Platz für Text, Aufzählungen oder
-längere Erklärungen.
+Mehr Platz links für Erklärtext oder längere Aufzählungen.
 
 - Punkt A
 - Punkt B
+- Punkt C
 
 </div>
 
 <div class="center">
 
-![w:200](images/Logo_HS_Ansbach.png)
-**Beispielbild rechts**
+![w:180](images/Logo_HS_Ansbach.png)
 
 </div>
 
@@ -218,19 +186,27 @@ längere Erklärungen.
 
 <!-- _class: split-40 -->
 
-# Zwei Spalten 40/60
+# Split 40/60 + `.unter-titel`
 
 <div>
 
-Kurzer Erklärungstext links, größerer Inhalt rechts
-(z. B. Diagramm, Tabelle, Code-Beispiel).
+Kompakter Text links. Ohne `.unter-titel` wäre die rechte Spalte
+über die **ganze Folienhöhe** vertikal zentriert (würde also höher
+sitzen als dieser Text hier).
+
+Mit `<div class="unter-titel">` startet die rechte Spalte erst
+**unter** dem Titel — beide Textblöcke auf gleicher Höhe.
 
 </div>
 
-<div class="center">
+<div class="unter-titel">
 
-![w:400](images/Logo_HS_Ansbach.png)
-<span class="quelle">*Quelle: HS Ansbach*</span>
+```python
+def greet(name: str) -> str:
+    return f"Hallo {name}!"
+```
+
+Code in der rechten Spalte, jetzt auf Augenhöhe mit dem linken Text.
 
 </div>
 
@@ -238,66 +214,79 @@ Kurzer Erklärungstext links, größerer Inhalt rechts
 
 <!-- _class: split-30 -->
 
-# Zwei Spalten 30/70
+# Split 30/70 — `_class: split-30`
 
 <div>
 
-Schmale linke Spalte für Schlagworte oder ein kleines Bild.
+Schmale linke Spalte für Schlagworte oder kleine Bilder.
 
 </div>
 
 <div>
 
-> "Hier passt ein längeres Zitat oder ein größerer Textblock
-> sehr gut hinein, ohne dass es links zu eng wird."
+> „Ein längeres Zitat oder ein größerer Textblock passt sehr gut
+> in die breite rechte Spalte, ohne dass die linke Spalte zu eng
+> wirkt."
 
-— *Quelle*
+— *Quellenangabe*
 
 </div>
 
 ---
 
-# Code-Beispiel
+# Inline-Klassen: `.center` und `.quelle`
 
-```python
-def calculate_annual_return(principal: float, monthly_rate: float) -> float:
-    """Berechnet die jährliche Rendite bei monatlicher Verzinsung."""
-    return principal * (1 + monthly_rate) ** 12
-```
+<div class="center">
 
-Erläuterung unter dem Code-Block. Inline-Code wie `variable_name`
-wird ebenfalls in Monospace dargestellt.
+![w:160](images/Logo_HS_Ansbach.png)
 
----
+**Zentriert via `.center`** — gut für QR-Codes, Logos, kleine Bilder.
 
-# Folie mit Bild im Hintergrund (rechts)
+</div>
 
-![bg right:35% w:70%](images/Logo_HS_Ansbach.png)
-
-Text links, Bild rechts. Über die Marp-Kurzform `bg right:WIDTH w:SIZE`
-lassen sich Bilder ohne `<div>`-Layout direkt platzieren.
-
-- Aufzählungspunkt 1
-- Aufzählungspunkt 2
-
----
-
-# Tabelle
-
-| Spalte 1 | Spalte 2 |
-|---|---|
-| **Feature** | Beschreibung |
-| Lesbar | Code für Menschen optimiert |
-| Testbar | Automatisiert prüfbar |
-| Wartbar | Änderungen sind sicher |
-
----
-
-# Quellenangabe-Beispiel
-
-Inhalt der Folie mit einer wissenschaftlichen Aussage¹.
+Aussage mit wissenschaftlicher Referenz¹.
 
 <span class="quelle">¹ Autor, A. *Titel der Arbeit.* Konferenz, Jahr. https://example.org</span>
+
+<!-- .quelle: kleine, kursive, rechtsbündige Quellenangabe. -->
+
+---
+
+# Kommentare & Speaker Notes
+
+**Zwei Kommentar-Arten** in einer `.md`-Datei:
+
+1. **HTML-Kommentar** → wird als Speaker Note im Presenter Mode
+   sichtbar, aber nicht auf der Folie:
+
+   ```markdown
+   <!-- Diese Notiz erscheint im Presenter Mode (Taste `p`),
+        nicht auf der Folie selbst. -->
+   ```
+
+2. **Markdown-only-Kommentar** → nur im `.md`-Source sichtbar,
+   weder auf der Folie noch im Presenter Mode (Trick mit
+   ungenutzter Link-Definition):
+
+   ```markdown
+   [//]: # (Diese Notiz steht nur im Quelltext.)
+   ```
+
+---
+
+Sichtbarkeit auf einen Blick:
+
+| Syntax | Folie | Presenter Mode | Quelltext |
+|---|:-:|:-:|:-:|
+| `<!-- ... -->` | — | ✓ | ✓ |
+| `[//]: # (...)` | — | — | ✓ |
+
+<!-- Beispiel-Speaker-Note für den Vortrag:
+     - Erinnerung: das Beispiel auf Folie 7 zeigen
+     - Quelle nennen
+     - 5 Minuten Diskussion einplanen -->
+
+[//]: # (Beispiel-Markdown-only-Kommentar — taucht nirgends auf außer hier im Source.)
 
 ---
 

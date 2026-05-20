@@ -1,81 +1,117 @@
-# Marp-Theme „hs-ansbach-weeger"
+# HS Ansbach — Marp Theme
 
-Marp-Theme im Corporate Design der Hochschule Ansbach: grünes
-Header-Banner mit HS-Logo, einheitliche Fußzeile (Veranstaltung links,
-Dozent mittig, Seitenzahl rechts), Titelfolie und mehrere
-Spalten-Layouts.
+Marp-Theme im Corporate Design der Hochschule Ansbach: grüner
+Hintergrund, einheitliche Fußzeile (Vorlesungstitel links, Dozent
+mittig, Seitenzahl rechts), Titelfolie und Spalten-Layouts.
+
+Beispieldeck mit allen Funktionen → [`template.md`](template.md).
+
+## Gliederung
+
+- [Inhalt dieses Ordners](#inhalt-dieses-ordners)
+- [Voraussetzung](#voraussetzung)
+- [Schnellstart](#schnellstart)
+- [Theme konfigurieren (zentrale Stelle)](#theme-konfigurieren-zentrale-stelle)
+- [Folienklassen (Layout)](#folienklassen-layout)
+  - [Spalten auf gleicher Höhe: `.unter-titel`](#spalten-auf-gleicher-höhe-unter-titel)
+- [Inline-Klassen](#inline-klassen)
+- [Markdown-Features im Überblick](#markdown-features-im-überblick)
+  - [Gliederung mit Sprung-Links](#gliederung-mit-sprung-links)
+- [Kommentare & Speaker Notes](#kommentare--speaker-notes)
+- [Live-Preview in VS Code](#live-preview-in-vs-code)
+- [Präsentation halten (empfohlener Weg: HTML)](#präsentation-halten-empfohlener-weg-html)
+- [Export](#export)
+- [Theme weitergeben](#theme-weitergeben)
+- [Troubleshooting](#troubleshooting)
+- [Contribution](#contribution)
 
 ## Inhalt dieses Ordners
 
 ```
-hs-ansbach-weeger/
-├── template.md                            ← selbständiges Beispiel-Foliendeck
-├── images/
-│   └── Logo_HS_Ansbach.png                ← Beispielbild (nur fürs Template)
-└── themes/                                ← alles, was zum Theme gehört
-    ├── README.md                          ← diese Datei
-    ├── hs-ansbach-weeger.css              ← das komplette Theme-CSS (Referenz)
-    └── hintergrund_hs_ansbach_grün.png    ← Theme-Asset (Pflicht, vom CSS referenziert)
+Presentation_Template_Marp/
+├── README.md                         ← diese Datei
+├── template.md                       ← Beispieldeck (alle Funktionen demonstriert)
+├── .vscode/settings.json             ← registriert das Theme
+├── images/                           ← Beispielbilder fürs Template
+│   └── Logo_HS_Ansbach.png
+└── themes/
+    ├── hs-ansbach-grün.css           ← Theme-CSS (Single Source)
+    └── hintergrund_hs_ansbach_grün.png  ← Quell-Asset (im CSS schon base64-inline)
 ```
 
-## Wie das Theme verteilt wird (wichtig zu verstehen)
-
-Marp-VSCode kann **kein** zentrales Theme über absolute Pfade laden
-(weder in User-Settings noch in `.vscode/settings.json` mit absolutem
-Pfad noch über `file://`-URLs noch über `@import`). Die Marp-Extension
-akzeptiert für `markdown.marp.themes` nur:
-
-- HTTPS-URLs, oder
-- relative Pfade **innerhalb** des aktuellen Workspace-Folders.
-
-Daher wird dieses Theme **als selbständiges Inline-Style verteilt**:
-Das komplette CSS steht im YAML-Frontmatter (`style: |`) jeder
-Foliendatei. Vorteil: Die `.md`-Datei ist self-contained, funktioniert
-sofort in jeder VS-Code-Installation mit Marp-Extension, ohne weiteres
-Setup.
-
-Nachteil: Theme-Änderungen müssen pro Foliendatei nachgezogen werden.
-Dieser Ordner ist die **Single Source of Truth** für das CSS — bei
-Änderungen am Theme den `style:`-Block in den Foliendateien gegen den
-Inhalt von `hs-ansbach-weeger.css` synchronisieren.
+Das Hintergrund-PNG ist als `data:`-URI direkt in die CSS eingebettet —
+beim Weitergeben reicht **ausschließlich `themes/hs-ansbach-grün.css`**
+(die `.png` muss nicht mit kopiert werden).
 
 ## Voraussetzung
 
-Marp-Extension für VS Code:
-[`marp-team.marp-vscode`](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)
+[Marp-Extension für VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode):
+`marp-team.marp-vscode`.
 
-(Optional: Marp-CLI für Export nach PDF/HTML/PPTX:
-`npm install -g @marp-team/marp-cli`)
+Für PDF/HTML/PPTX-Export optional die [Marp-CLI](https://github.com/marp-team/marp-cli):
 
-## Neue Präsentation anlegen
+```bash
+npm install -g @marp-team/marp-cli
+```
 
-1. **template.md** und **themes/-Ordner** in dein Projekt kopieren:
+## Schnellstart
 
-   ```bash
-   cp "/pfad/zu/MarpThemes/hs-ansbach-weeger/template.md" /pfad/zu/deinem/projekt/folien.md
-   cp -r "/pfad/zu/MarpThemes/hs-ansbach-weeger/themes" /pfad/zu/deinem/projekt/
-   ```
+1. Ordner klonen/kopieren in dein Projekt.
+2. [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css) öffnen,
+   ganz oben die zwei Konfigurationszeilen anpassen (siehe nächster
+   Abschnitt).
+3. [`template.md`](template.md) als Ausgangspunkt für deine eigenen
+   Folien duplizieren (`cp template.md vorlesung-01.md`).
+4. In VS Code mit `Ctrl+Shift+V` (Preview im Editor) oder `Ctrl+K V`
+   (Preview daneben) ansehen.
 
-   Der `themes/`-Ordner enthält das vom CSS referenzierte
-   Hintergrundbild — er muss **neben** der Markdown-Datei liegen.
+Die Foliendatei braucht im YAML-Frontmatter:
 
-2. **`footer:`** im Frontmatter auf den eigenen Veranstaltungstitel ändern.
-3. **Inhalte** in den Folien ersetzen.
-4. **Live-Preview** in VS Code: `Ctrl+Shift+V` (Preview im Editor)
-   oder `Ctrl+K V` (Preview daneben). Das Theme greift sofort, da
-   im Frontmatter inline definiert.
+```yaml
+---
+marp: true
+theme: hs-ansbach-grün
+paginate: true
+footer: "Vorlesungstitel"   ← egal welcher Wert, dient nur als Trigger
+---
+```
 
-## Verfügbare Layout-Klassen
+`footer:` muss gesetzt sein, damit Marp das Footer-Element rendert.
+Der angezeigte Text kommt aus der CSS-Variable (siehe nächster Abschnitt),
+nicht aus diesem Wert.
+
+## Theme konfigurieren (zentrale Stelle)
+
+In [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css) ganz oben
+im `section { ... }`-Block, im `ZENTRALE KONFIGURATION`-Abschnitt:
+
+```css
+--dozent-name: 'Prof. Dr. Mustermann';
+--vorlesung-titel: 'Vorlesungstitel';
+```
+
+Beide Werte ändern → wirkt automatisch auf **alle** Foliendateien, die
+`theme: hs-ansbach-grün` verwenden. Keine Änderung pro Deck nötig.
+
+**Pro-Deck-Override** (z.B. ein einzelner Gastvortrag mit anderem
+Titel): im YAML-Frontmatter der jeweiligen `.md`:
+
+```yaml
+style: |
+  section { --vorlesung-titel: 'Sonderfall'; }
+```
+
+## Folienklassen (Layout)
 
 Per HTML-Kommentar als **erste Zeile** der Folie aktivieren:
 
-| Klasse | Wirkung |
-|---|---|
-| `<!-- _class: title -->` | Titelfolie: zentriert, ohne Footer und Seitenzahl |
-| `<!-- _class: split -->` | Zwei Spalten 50/50 |
-| `<!-- _class: split-60 -->` | 60/40 |
-| `<!-- _class: split-40 -->` | 40/60 |
-| `<!-- _class: split-30 -->` | 30/70 |
+| Klasse | Wirkung | Demo |
+|---|---|---|
+| `<!-- _class: title -->` | Titelfolie: zentriert, kein Footer, keine Seitenzahl | [template.md](template.md) Folie 1, 14 |
+| `<!-- _class: split -->` | 2 Spalten 50/50 | Folie 8 |
+| `<!-- _class: split-60 -->` | 2 Spalten 60/40 | Folie 9 |
+| `<!-- _class: split-40 -->` | 2 Spalten 40/60 | Folie 10 |
+| `<!-- _class: split-30 -->` | 2 Spalten 30/70 | Folie 11 |
 
 **Konvention für Split-Folien:**
 
@@ -92,61 +128,211 @@ Linke Spalte (steht unter dem Titel)
 
 <div>
 
-Rechte Spalte (vertikal über die ganze Folienhöhe zentriert,
-unabhängig vom Titel)
+Rechte Spalte (vertikal über die ganze Folienhöhe zentriert)
 
 </div>
 ```
+
+### Spalten auf gleicher Höhe: `.unter-titel`
+
+Standardmäßig wird die **rechte Spalte über die ganze Folienhöhe**
+vertikal zentriert — sie sitzt damit „neben" dem Titel, also höher
+als der linke Text. Wenn du beide Spalten auf gleicher Höhe haben
+willst, leg `class="unter-titel"` auf den rechten `<div>`:
+
+```markdown
+<!-- _class: split-40 -->
+
+# Folientitel
+
+<div>
+
+Linker Text (unter dem Titel).
+
+</div>
+
+<div class="unter-titel">
+
+Rechter Text — startet erst unter dem Titel, auf gleicher Höhe
+wie der linke.
+
+</div>
+```
+
+Demo: [template.md](template.md) Folie 10.
 
 ## Inline-Klassen
 
 | Klasse | Wirkung | Beispiel |
 |---|---|---|
-| `.center` | Block zentrieren (für QR-Codes, Logos) | `<div class="center"> ![](qr.png) </div>` |
+| `.center` | Block-Inhalt zentrieren (Logos, QR-Codes) | `<div class="center">![](qr.png)</div>` |
 | `.quelle` | Kleine kursive Quellenangabe, rechtsbündig | `<span class="quelle">Quelle: …</span>` |
+| `.unter-titel` | Spalte einer Split-Folie unter dem Titel positionieren | `<div class="unter-titel">…</div>` |
 
-## Eigene Bilder
+Demo: [template.md](template.md) Folie 12 (`.center`/`.quelle`) und Folie 10 (`.unter-titel`).
 
-Bilder gehören in den `images/`-Ordner **deines Projekts**, nicht in
-den `themes/`-Ordner. `themes/` enthält ausschließlich das vom CSS
-referenzierte Hintergrund-PNG (Theme-Asset).
+## Markdown-Features im Überblick
 
-Im Markdown referenzieren:
+Alle als Beispiele in [`template.md`](template.md):
+
+| Feature | Syntax | Demo-Folie |
+|---|---|---|
+| Gliederung mit Sprung-Links | `[Abschnitt](#3)` | Folie 2 |
+| Hervorhebung | `**fett**`, `*kursiv*`, `` `code` `` | Folie 4 |
+| Aufzählungen | `- punkt` / `1. punkt` | Folie 4 |
+| Zitate | `> Zitat` | Folie 5, 11 |
+| Code-Block | ` ```python … ``` ` | Folie 5 |
+| Tabelle | `\| Spalte \| Spalte \|` + `\|---\|---\|` | Folie 6 |
+| Bild mit Größe | `![w:300](pfad)`, `![h:150](pfad)` | Folie 7 |
+| Bild als Hintergrund | `![bg right:35% w:70%](pfad)` | Folie 7 |
+| Speaker Notes | `<!-- Notiz -->` auf einer Folie | jede Folie |
+| Markdown-only-Kommentar | `[//]: # (Notiz)` | Folie 13 |
+
+### Gliederung mit Sprung-Links
+
+In Marp-Bespoke-HTML (Standard-Export) ist jede Folie über die URL
+`#N` (Folien-Nummer ab 1) ansteuerbar. Eine Gliederung mit Links:
 
 ```markdown
-![w:300](images/mein_bild.png)
+# Gliederung
+
+1. [Konfiguration](#3)
+2. [Markdown-Grundlagen](#4)
+3. [Tabelle](#6)
 ```
 
-## PDF/HTML/PPTX exportieren
+Funktioniert im HTML-Export — in der VS-Code-Preview springen die
+Anker nicht zuverlässig. Demo: [template.md](template.md) Folie 2.
+
+## Kommentare & Speaker Notes
+
+**Zwei Kommentar-Arten** in einer `.md`-Datei — Übersicht:
+
+| Syntax | Folie | Presenter Mode | Quelltext |
+|---|:-:|:-:|:-:|
+| `<!-- … -->` (HTML-Kommentar) | — | ✓ | ✓ |
+| `[//]: # (…)` (Markdown-only) | — | — | ✓ |
+
+**HTML-Kommentare** dienen doppelt:
+
+1. **Folienklasse setzen** — als *erste Zeile* der Folie:
+   ```markdown
+   <!-- _class: split -->
+   ```
+2. **Speaker Notes** — überall sonst auf der Folie:
+   ```markdown
+   <!-- Diese Notiz erscheint im Presenter Mode,
+        nicht auf der Folie selbst. -->
+   ```
+
+**Markdown-only-Kommentare** (`[//]: # (…)`) tauchen *nirgends* im
+gerenderten Output auf — auch nicht im Presenter Mode. Nutzen:
+Editor-interne TODOs, Review-Notizen, deaktivierte Folien-Inhalte.
+
+```markdown
+[//]: # (TODO: Quelle für die Folie noch suchen.)
+```
+
+Demo: [template.md](template.md) Folie 13.
+
+Marp behandelt jeden HTML-Kommentar, der **nicht** mit `_class:`,
+`_backgroundColor:`, `_color:` o.ä. anfängt, als Speaker Note. Diese
+sind im HTML-Presenter-Mode sichtbar (siehe nächster Abschnitt).
+
+## Live-Preview in VS Code
+
+| Shortcut | Wirkung |
+|---|---|
+| `Ctrl+Shift+V` | Preview im Editor öffnen |
+| `Ctrl+K V` | Preview daneben (Split) |
+
+Änderungen am Markdown und an [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css)
+werden live übernommen.
+
+## Präsentation halten (empfohlener Weg: HTML)
+
+1. Folien als HTML exportieren (siehe nächster Abschnitt) — eine
+   `.html`-Datei, in jedem Browser lauffähig, **inklusive Speaker
+   Notes**.
+2. HTML-Datei im Browser öffnen.
+3. Steuerung im Browser:
+
+| Taste | Wirkung |
+|---|---|
+| `f` | Fullscreen-Modus |
+| `p` | **Presenter Mode** — Notizen + nächste Folie in extra Fenster |
+| `→` / `Space` | Nächste Folie |
+| `←` | Vorherige Folie |
+| `b` | Bildschirm schwarz |
+| `w` | Bildschirm weiß |
+| `Esc` | Fullscreen verlassen |
+
+**Empfehlung für den Vortrag:** Browser im Fullscreen (`f`) für die
+Projektion, parallel ein zweites Browser-Fenster im Presenter Mode
+(`p`) auf dem Notebook-Display — dort siehst du Notizen und die
+nächste Folie.
+
+## Export
+
+In VS Code: `Ctrl+Shift+P` → **„Marp: Export slide deck…"** → Format wählen.
 
 Per Marp-CLI:
 
-```bash
-marp folien.md -o folien.pdf
-marp folien.md -o folien.html
-marp folien.md -o folien.pptx --allow-local-files
+| Format | Befehl | Hinweise |
+|---|---|---|
+| HTML (empfohlen) | `marp folien.md -o folien.html` | Self-contained, Presenter Mode inklusive. Mit Bildern: `--allow-local-files` ergänzen. |
+| PDF | `marp folien.md -o folien.pdf --allow-local-files` | Statisch, keine Notizen. |
+| PPTX | `marp folien.md -o folien.pptx --allow-local-files` | PowerPoint-kompatibel; Theme wird als Bild gerendert (kein editierbares Layout). |
+
+`--allow-local-files` wird gebraucht, wenn das Deck eigene Bilder
+referenziert (`images/...`). Der Theme-Hintergrund ist bereits als
+base64 in der CSS und braucht das Flag **nicht**.
+
+## Theme weitergeben
+
+Drei Dateien reichen:
+
+```
+themes/hs-ansbach-grün.css   ← komplettes Theme (Hintergrund inline)
+.vscode/settings.json        ← optional, registriert das Theme
+template.md                  ← optional, als Beispieldeck
 ```
 
-Per VS Code-Extension: `Ctrl+Shift+P` → **„Marp: Export slide deck…"**
+Empfänger ändert ggf. die beiden Variablen oben in der CSS, fertig.
+`images/` und `themes/hintergrund_hs_ansbach_grün.png` werden nur als
+Quell-Assets gebraucht (Logo für eigene Folien, PNG als Backup für
+spätere CSS-Updates).
 
 ## Troubleshooting
 
 | Problem | Ursache / Lösung |
 |---|---|
-| Preview zeigt **kein Hintergrundbild** | `themes/hintergrund_hs_ansbach_grün.png` fehlt neben der `.md`-Datei. |
-| Hintergrund **funktioniert in Preview, aber nicht im Export** | Marp-CLI mit `--allow-local-files` aufrufen. |
-| **Layout sieht anders aus als erwartet** | Der `style:`-Block im Frontmatter ist beschädigt oder unvollständig — frische Kopie aus `themes/hs-ansbach-weeger.css` einsetzen. |
-| **Dozent-Name** falsch | Im `style:`-Block hartkodiert (`section::before { content: 'Prof. Nicolas Weeger'; }`). Direkt in der `.md`-Datei ändern. |
+| **„theme not recognized"-Warning** | VS Code hat `.vscode/settings.json` noch nicht neu eingelesen. `Ctrl+Shift+P` → „Developer: Reload Window". |
+| Footer **wird nicht angezeigt** | Im Frontmatter fehlt `footer:` — Marp emittiert ohne Direktive kein `<footer>`-Element, das Pseudo-Element greift dann nicht. Beliebigen Wert setzen, z.B. `footer: " "`. |
+| Hintergrund **fehlt in PDF/PPTX-Export** | Sollte nicht passieren (base64-inline). Falls doch: prüfen, ob die CSS-Datei beim Export geladen wurde. |
+| Eigene Bilder **fehlen im Export** | Marp-CLI mit `--allow-local-files` aufrufen. |
+| Dozent oder Vorlesung **falsch** | In [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css) die CSS-Variablen `--dozent-name` und `--vorlesung-titel` ändern. |
 
-## Theme aktualisieren
+## Contribution
 
-`themes/hs-ansbach-weeger.css` ist die **Referenz-Version** des Themes
-(reines, kommentiertes CSS). Bei Änderungen:
+Pull Requests sind willkommen. Wenn du eigene **Layouts**, **Inline-Klassen**
+oder andere praktische **Funktionen** ergänzt, pushe sie gerne zurück —
+so können alle anderen Nutzer:innen davon profitieren.
 
-1. CSS hier zentral anpassen.
-2. Den Inhalt in den `style:`-Block der einzelnen Foliendateien
-   übertragen (manuell oder per Skript).
+**Vorschlag für den Workflow:**
 
-Tipp für Bulk-Updates: Da der `style:`-Block immer zwischen den
-YAML-Markern `style: |` und `---` steht, lässt sich der Austausch
-mit einem kleinen `sed`/`awk`-Skript automatisieren.
+1. Feature-Branch anlegen: `git checkout -b feature/<kurz-beschreibung>`
+2. Änderungen am Theme (`themes/hs-ansbach-grün.css`) **und** ein Beispiel
+   in [`template.md`](template.md) ergänzen (damit das neue Feature für
+   andere sichtbar und nachvollziehbar ist).
+3. README-Tabellen aktualisieren — neue Klasse oder Folien-Funktion
+   einreihen, sodass die Übersicht vollständig bleibt.
+4. Pull Request öffnen, kurz beschreiben *was* das Feature tut und
+   *wofür* es nützlich ist.
+
+**Ideen für sinnvolle Erweiterungen** (unverbindlich):
+
+- weitere Split-Verhältnisse (z.B. `split-20` / `split-70`)
+- Klassen für Hervorhebungs-Boxen (Info, Warnung, Beispiel)
+- Theme-Variante mit anderem Farbschema oder Header-Bild
+- Snippet-Sammlung für VS Code (häufig genutzte Folien-Skelette)
