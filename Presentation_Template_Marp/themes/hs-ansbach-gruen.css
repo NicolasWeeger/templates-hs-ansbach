@@ -1,4 +1,4 @@
-/* @theme hs-ansbach-grün */
+/* @theme hs-ansbach-gruen */
 
 /*
  * Hochschule Ansbach — Marp Theme
@@ -9,13 +9,13 @@
  * Usage in a .md file:
  *   ---
  *   marp: true
- *   theme: hs-ansbach-grün
+ *   theme: hs-ansbach-gruen
  *   paginate: true
  *   footer: "My lecture title"
  *   ---
  *
  * Marp CLI:
- *   marp --theme-set themes/hs-ansbach-grün.css foo.md
+ *   marp --theme-set themes/hs-ansbach-gruen.css foo.md
  *
  * Or via .marprc.yml:
  *   themeSet: "./themes"
@@ -48,16 +48,15 @@
 section {
     /* ============================================================
    * CENTRAL CONFIGURATION
-   * Edit the two lines below — applies automatically to ALL slide
-   * files that use `theme: hs-ansbach-grün`.
+   * Edit the line below — applies automatically to ALL slide
+   * files that use `theme: hs-ansbach-gruen`.
    *
-   * Per-deck override (e.g. a single guest lecture with a different
-   * title) — in the YAML frontmatter of that .md file:
+   * Per-deck override (e.g. a guest lecturer) — in the YAML
+   * frontmatter of that .md file:
    *   style: |
-   *     section { --course-title: 'Special case'; }
+   *     section { --lecturer-name: 'Guest lecturer'; }
    * ============================================================ */
-    --lecturer-name: 'Prof. Dr. Mustermann';
-    --course-title: 'Dies und das';
+    --lecturer-name: 'Prof. Nicolas Weeger';
 
     font-size: 24px;
     padding-top: 120px;
@@ -79,24 +78,23 @@ code {
  * e.g. `<!-- _class: split compact -->`.
  * ============================================================ */
 
-section.compact  { font-size: 20px; }
-section.dense { font-size: 18px; }
+section.compact {
+    font-size: 20px;
+}
+
+section.dense {
+    font-size: 18px;
+}
 
 /* ============================================================
  * Master footer
  * ============================================================ */
 
-/* Footer bottom-left: Marp needs any `footer:` value in the frontmatter
-   as a trigger so the <footer> element is rendered at all.
-   The actual content comes from --course-title (see above). */
+/* Footer bottom-left: shows whatever you put into the `footer:` directive
+   of the .md frontmatter (typically the lecture title). Set it per deck. */
 footer {
     left: 30px;
     bottom: 25px;
-    font-size: 0;
-}
-
-footer::before {
-    content: var(--course-title);
     font-size: 14px;
     color: #555;
 }
@@ -193,10 +191,10 @@ section.split-30>div:nth-of-type(2) {
    result, the left and right text blocks line up at the same height
    (instead of the right column being centered over the full slide
    and ending up "next to" the title). */
-section.split    > div.below-title,
-section.split-60 > div.below-title,
-section.split-40 > div.below-title,
-section.split-30 > div.below-title {
+section.split>div.below-title,
+section.split-60>div.below-title,
+section.split-40>div.below-title,
+section.split-30>div.below-title {
     grid-row: 2;
 }
 

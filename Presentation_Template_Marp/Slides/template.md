@@ -1,8 +1,8 @@
 ---
 marp: true
-theme: hs-ansbach-grün
+theme: hs-ansbach-gruen
 paginate: true
-footer: "Vorlesungstitel"
+footer: "Vorlesungsitel"
 ---
 
 <!-- _class: title -->
@@ -17,7 +17,6 @@ Prof. Dr. Mustermann · Hochschule Ansbach
      Aktiviert über `<!-- _class: title -->` als erste Zeile der Folie. -->
 
 [//]: # (Diese Zeile ist ein "Markdown-only"-Kommentar: nur im .md-Source sichtbar, weder auf der Folie noch im Presenter-Mode. Beispiel weiter unten auf der Kommentar-Folie.)
-
 
 ---
 
@@ -49,13 +48,13 @@ Wenn diese Folie:
 
 - den grünen HS-Ansbach-Hintergrund zeigt,
 - "Prof. Dr. Mustermann" unten in der Mitte hat (CSS-Variable
-  `--lecturer-name` in [`themes/hs-ansbach-grün.css`](themes/hs-ansbach-grün.css)),
+  `--lecturer-name` in `themes/hs-ansbach-gruen.css`),
 - die Seitenzahl unten rechts hat,
-- den Footer "Vorlesungstitel" unten links hat (CSS-Variable
-  `--course-title`),
+- den Footer "Vorlesungstitel" unten links hat (Wert aus dem
+  `footer:`-Feld im YAML-Frontmatter dieser `.md` — pro Deck setzen),
 
-→ greift das Theme korrekt. Ändere die beiden Variablen ganz oben in
-der CSS-Datei, dann gilt es automatisch für alle Decks.
+→ greift das Theme korrekt. Den **Dozent-Namen** zentral in der CSS,
+den **Vorlesungstitel** pro Deck im `footer:`-Feld.
 
 <!-- Diese HTML-Kommentare auf einer Folie sind Speaker Notes —
      im Presenter Mode (HTML-Export, Taste `p`) sichtbar, auf der
@@ -121,14 +120,14 @@ zweiten Tabellenzeile.
 
 # Bilder
 
-![w:200](images/Logo_HS_Ansbach.png)
+![w:200](../images/Logo_HS_Ansbach.png)
 
 Bilder mit Größenangabe: `![w:200](pfad)` für Breite in Pixel,
 `![h:150]` für Höhe, beides kombinierbar.
 
 Als Hintergrund rechts (überlappt den restlichen Inhalt nicht):
 
-![bg right:35% w:70%](images/Logo_HS_Ansbach.png)
+![bg right:35% w:70%](../images/Logo_HS_Ansbach.png)
 
 Aufruf: `![bg right:35% w:70%](pfad)` — 35% der Folienbreite,
 Bild auf 70% dieser Breite skaliert.
@@ -182,7 +181,7 @@ Mehr Platz links für Erklärtext oder längere Aufzählungen.
 
 <div class="center">
 
-![w:180](images/Logo_HS_Ansbach.png)
+![w:180](../images/Logo_HS_Ansbach.png)
 
 </div>
 
@@ -242,7 +241,7 @@ Schmale linke Spalte für Schlagworte oder kleine Bilder.
 
 <div class="center">
 
-![w:160](images/Logo_HS_Ansbach.png)
+![w:160](../images/Logo_HS_Ansbach.png)
 
 **Zentriert via `.center`** — gut für QR-Codes, Logos, kleine Bilder.
 

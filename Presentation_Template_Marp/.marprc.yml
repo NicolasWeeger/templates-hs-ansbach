@@ -1,0 +1,7 @@
+# Marp CLI configuration — gilt für alle marp-Aufrufe in diesem Workspace
+# (CLI-Export, Watch-Task in .vscode/tasks.json, etc.).
+# Die VS-Code-Marp-Extension nutzt davon nichts — sie liest
+# markdown.marp.themes aus den Settings.
+
+themeSet:
+  - ./themes

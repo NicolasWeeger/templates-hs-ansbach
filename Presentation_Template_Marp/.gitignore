@@ -1,2 +1,10 @@
-# Persönliche Konfiguration (kommt in Schritt 2)
+# Lokale Konfiguration
 .env
+
+# Claude Code Agent-Logs
+.claude/
+
+# Marp HTML-Output (wird per Watch-Task automatisch generiert).
+# .gitkeep bleibt drin, damit der Ordner im Repo existiert.
+Slides/html_Slides/*
+!Slides/html_Slides/.gitkeep
