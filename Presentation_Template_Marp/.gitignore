@@ -8,3 +8,6 @@
 # .gitkeep bleibt drin, damit der Ordner im Repo existiert.
 Slides/html_Slides/*
 !Slides/html_Slides/.gitkeep
+
+# Symlink fuer Bildpfade im HTML-Export (siehe bin/init-marp-workspace.sh)
+Slides/images

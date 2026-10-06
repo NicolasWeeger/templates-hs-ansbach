@@ -1,5 +1,6 @@
 {
     "markdown.marp.themes": [
-        "./themes/hs-ansbach-gruen.css"
-    ]
+        "https://raw.githubusercontent.com/NicolasWeeger/templates-hs-ansbach/main/Presentation_Template_Marp/themes/hs-ansbach-gruen.css"
+    ],
+    "markdown.marp.html": "all"
 }

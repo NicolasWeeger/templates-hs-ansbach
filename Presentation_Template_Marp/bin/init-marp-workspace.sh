@@ -6,7 +6,7 @@
 # Anlegt:
 #   <workspace>/themes              → Symlink in das zentrale Theme-Repo
 #   <workspace>/.marprc.yml         → themeSet: ./themes
-#   <workspace>/.vscode/settings.json → markdown.marp.themes registriert
+#   <workspace>/.vscode/settings.json → markdown.marp.themes (GitHub-URL) + html: all
 #   <workspace>/.vscode/tasks.json  → Marp HTML watch (auto-export on save)
 #   <workspace>/.gitignore          → Symlink + Watch-Output ausgeblendet
 #   <workspace>/Slides/             → leerer Ordner für eigene .md-Decks
@@ -49,6 +49,22 @@ else
     echo "✓ Symlink angelegt: themes -> ${THEMES_SRC}"
 fi
 
+# --- images/ + Slides/images-Symlink ------------------------------------------
+# Bilder liegen zentral in <workspace>/images und werden aus den .md-Dateien
+# als ../images/... referenziert. Der HTML-Export landet aber in
+# Slides/html_Slides/ — dort zeigt ../images/ auf Slides/images/. Der Symlink
+# Slides/images -> ../images sorgt dafür, dass die exportierte HTML dieselben
+# relativen Pfade auflösen kann wie die .md-Preview.
+mkdir -p images Slides
+if [[ -L Slides/images ]]; then
+    echo "✓ Slides/images ist bereits Symlink: $(readlink Slides/images)"
+elif [[ -e Slides/images ]]; then
+    echo "⚠ Slides/images existiert bereits als echter Ordner — kein Symlink angelegt"
+else
+    ln -s ../images Slides/images
+    echo "✓ Symlink angelegt: Slides/images -> ../images (fixt Bildpfade im HTML-Export)"
+fi
+
 # --- .marprc.yml -------------------------------------------------------------
 if [[ -e .marprc.yml ]]; then
     echo "✓ .marprc.yml existiert bereits — unverändert gelassen"
@@ -65,15 +81,23 @@ fi
 # --- .vscode/ ----------------------------------------------------------------
 mkdir -p .vscode
 
+# The VS Code Marp extension only accepts theme paths INSIDE the opened folder
+# (no absolute paths, no file:// URLs), so a local path breaks the preview as
+# soon as a parent or child folder is opened. A public https URL works from any
+# folder. The CLI export (.marprc.yml) keeps using the local ./themes copy.
+THEME_URL="https://raw.githubusercontent.com/NicolasWeeger/templates-hs-ansbach/main/Presentation_Template_Marp/themes/hs-ansbach-gruen.css"
+
 if [[ -e .vscode/settings.json ]]; then
     echo "⚠ .vscode/settings.json existiert bereits — bitte ergänze manuell:"
-    echo "    \"markdown.marp.themes\": [\"./themes/hs-ansbach-gruen.css\"]"
+    echo "    \"markdown.marp.themes\": [\"${THEME_URL}\"],"
+    echo "    \"markdown.marp.html\": \"all\""
 else
-    cat >.vscode/settings.json <<'EOF'
+    cat >.vscode/settings.json <<EOF
 {
     "markdown.marp.themes": [
-        "./themes/hs-ansbach-gruen.css"
-    ]
+        "${THEME_URL}"
+    ],
+    "markdown.marp.html": "all"
 }
 EOF
     echo "✓ .vscode/settings.json angelegt"
@@ -112,7 +136,7 @@ fi
 
 # --- .gitignore --------------------------------------------------------------
 touch .gitignore
-for entry in "themes" "Slides/html_Slides/"; do
+for entry in "themes" "Slides/html_Slides/" "Slides/images"; do
     if ! grep -qxF "${entry}" .gitignore; then
         echo "${entry}" >>.gitignore
         echo "✓ .gitignore: ${entry} hinzugefügt"
@@ -162,3 +186,8 @@ echo "Nächste Schritte:"
 echo "  1. VS Code im Workspace öffnen: code \"${TARGET}\""
 echo "  2. Slides/01-folien.md öffnen (oder eigene .md anlegen)"
 echo "  3. Preview: Ctrl+Shift+V"
+echo
+echo "Hinweis: Die VS-Code-Preview lädt das Theme von GitHub (Internet nötig)."
+echo "  Damit es in JEDEM Ordner funktioniert, dieselben zwei Einträge einmalig"
+echo "  in die VS-Code-User-Settings übernehmen (siehe .vscode/settings.json)."
+echo "  Theme-Änderungen erscheinen in der Preview erst nach git push."

@@ -106,16 +106,42 @@ Folien schreiben willst, einen **Symlink** in den `themes/`-Ordner
 legen. Das Theme lebt physisch nur einmal, jede Änderung greift sofort
 in allen Präsentationen.
 
-### Warum Symlink — und nicht User-Settings?
+### VS-Code-Preview: Theme per GitHub-URL (empfohlen)
 
-Die Marp-VS-Code-Extension lädt CSS-Themes aus
+Die Marp-VS-Code-Extension lädt lokale CSS-Themes aus
 `markdown.marp.themes` **nur, wenn sie innerhalb des geöffneten
-Workspaces liegen** — ein absoluter Pfad in den User-Settings, der
-außerhalb zeigt, wird aus Sicherheitsgründen ignoriert (still, ohne
-Fehlermeldung — die Preview rendert dann das Default-Theme). Ein
-Symlink im Workspace umgeht diese Schranke sauber: aus Sicht der
-Extension liegt das Theme im Workspace, physisch lebt es weiter
-zentral.
+Ordners liegen** — absolute Pfade und `file://`-URLs ignoriert sie
+still, die Preview rendert dann das Default-Theme. Ein relativer Pfad
+bricht also, sobald man einen Über- oder Unterordner öffnet oder
+Ordner verschiebt.
+
+`https://`-URLs akzeptiert die Extension dagegen überall. Deshalb
+**einmalig in die VS-Code-User-Settings** (`Ctrl+Shift+P` →
+„Preferences: Open User Settings (JSON)“):
+
+```json
+"markdown.marp.themes": [
+    "https://raw.githubusercontent.com/NicolasWeeger/templates-hs-ansbach/main/Presentation_Template_Marp/themes/hs-ansbach-gruen.css"
+],
+"markdown.marp.html": "all"
+```
+
+Danach funktioniert die Preview in **jedem** Ordner. Das Init-Skript
+schreibt dieselben Einträge zusätzlich in die Workspace-`settings.json`
+(Workspace-Settings überschreiben User-Settings — ein lokaler Pfad dort
+würde die URL also aushebeln).
+
+- `markdown.marp.html: "all"` ist nötig, weil die Split-Layouts
+  `<div>`-Blöcke und `.source` ein `<span>` nutzen.
+- Die Preview braucht Internet und zeigt den Stand auf `main` —
+  Theme-Änderungen erst nach `git push` sichtbar.
+- Die **CLI** (Watch-Task, PDF-Export) nutzt weiterhin die lokale Kopie
+  über den `themes`-Symlink und `.marprc.yml` (siehe unten).
+
+### Warum trotzdem ein Symlink?
+
+Für die Marp-CLI: `.marprc.yml` (`themeSet: ./themes`) findet das Theme
+über den Symlink, ohne Internet und immer mit dem lokalen Stand.
 
 ### Schritt 1 — Repo einmal zentral ablegen
 
@@ -174,19 +200,20 @@ echo "themes" >> .gitignore   # Symlink nicht ins Repo committen
 lrwxrwxrwx ... themes -> /pfad/zu/Presentation_Template_Marp/themes
 ```
 
-**(b) `.vscode/settings.json` anlegen** — registriert das Theme über
-den Symlink für die VS-Code-Preview und den manuellen Export:
+**(b) `.vscode/settings.json` anlegen** — registriert das Theme für die
+VS-Code-Preview (siehe [Theme per GitHub-URL](#vs-code-preview-theme-per-github-url-empfohlen)):
 
 ```json
 {
     "markdown.marp.themes": [
-        "./themes/hs-ansbach-gruen.css"
-    ]
+        "https://raw.githubusercontent.com/NicolasWeeger/templates-hs-ansbach/main/Presentation_Template_Marp/themes/hs-ansbach-gruen.css"
+    ],
+    "markdown.marp.html": "all"
 }
 ```
 
-Der relative Pfad `./themes/...` folgt dem Symlink — du musst hier
-nie den zentralen Pfad eintragen.
+Stehen die Einträge schon in den User-Settings, ist diese Datei
+optional.
 
 **(c) `.marprc.yml` und `.vscode/tasks.json` anlegen** — für die
 Marp-CLI (Watch-Build beim Speichern + Terminal-Export für PDF/PPTX).
@@ -199,8 +226,9 @@ Auto-Build funktionieren.
 ### Theme-Update an einer Stelle
 
 Änderst du `themes/hs-ansbach-gruen.css` im zentralen Repo, sehen das
-**alle** Workspaces mit Symlink sofort — der Symlink folgt dem
-Original.
+**alle** Workspaces mit Symlink sofort beim CLI-Export — der Symlink
+folgt dem Original. Die VS-Code-Preview zeigt die Änderung erst nach
+`git push` (sie lädt das Theme von GitHub).
 
 ### CLI-Export & Auto-HTML-Watch in den eigenen Projekten
 
@@ -208,8 +236,7 @@ Wichtig zu verstehen — es gibt **zwei** Marp-Welten, die separat
 konfiguriert werden:
 
 - **VS-Code-Preview / manueller Export**: liest `markdown.marp.themes`
-  aus der Workspace-`settings.json` (Schritt 3b) → `./themes/hs-ansbach-gruen.css`
-  über den Symlink.
+  aus User- bzw. Workspace-`settings.json` (Schritt 3b) → GitHub-URL.
 - **Marp-CLI** (Watch-Task, Terminal-Export): kennt die VS-Code-
   Settings nicht. Findet das Theme nur über `.marprc.yml` im
   Workspace.
@@ -239,9 +266,8 @@ konfiguriert werden:
    ```
    → [`.vscode/tasks.json`](.vscode/tasks.json) in diesem Repo.
 
-Damit ist der Symlink die einzige Quelle der Wahrheit — Extension
-**und** CLI lesen beide über `./themes/`. Biegst du den Symlink mal
-um (anderer Speicherort des zentralen Repos), folgen beide
+Die CLI liest über `./themes/` immer den lokalen Stand. Biegst du den
+Symlink mal um (anderer Speicherort des zentralen Repos), folgt sie
 automatisch — keine Datei im Workspace muss angepasst werden.
 
 **Kann man das automatisieren?** Leider nein — VS Code startet
